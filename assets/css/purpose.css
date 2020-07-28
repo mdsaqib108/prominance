@@ -26243,6 +26243,15 @@ span.flatpickr-weekday {
   color: #569cd6
 }
 
+.underline-gradient {
+  display:inline-block;
+  padding-bottom:2px;
+  background: linear-gradient(90deg, #3dc1ed 0%, #7ac49d 100%);
+  background-size:100% 4px;
+  background-position:bottom 0 left 0,bottom 5px left 0;
+  background-repeat:no-repeat;
+}
+
 .hljs-link {
   text-decoration: underline
 }
