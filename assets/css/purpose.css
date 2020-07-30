@@ -26259,6 +26259,14 @@ span.flatpickr-weekday {
   background-repeat:no-repeat;
 }
 
+.sub-head {
+  background: linear-gradient(90deg, #3dc1ed 0%, #7ac49d 100%);
+  color: #fff;
+  border-radius: .25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .hljs-link {
   text-decoration: underline
 }
@@ -28398,7 +28406,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   -webkit-transform: scale(1.4);
   -ms-transform: scale(1.4);
   transform: scale(1.4);
-  background: #6e00ff;
+  background: #7ac49d;
   opacity: 1
 }
 
