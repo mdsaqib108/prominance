@@ -14376,8 +14376,8 @@ button.bg-white-dark:hover {
 }
 
 .bg-gradient-primary {
-  background: -o-linear-gradient(40deg, #6e00ff 0, #b0f 100%) !important;
-  background: linear-gradient(50deg, #6e00ff, #b0f) !important
+  background: -o-linear-gradient(90deg, #3dc1ed 0%, #7ac49d 100%) !important;
+  background: linear-gradient(90deg, #3dc1ed 0%, #7ac49d 100%) !important;
 }
 
 .bg-gradient-secondary {
@@ -26250,6 +26250,8 @@ span.flatpickr-weekday {
   color: #569cd6
 }
 
+/*custom*/
+
 .underline-gradient {
   display:inline-block;
   padding-bottom:2px;
@@ -26266,6 +26268,8 @@ span.flatpickr-weekday {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
+
 
 .hljs-link {
   text-decoration: underline
