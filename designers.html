@@ -14,8 +14,12 @@
     <link rel="stylesheet" href="assets/libs/animate.css/animate.min.css">
     <link rel="stylesheet" href="assets/libs/swiper/dist/css/swiper.min.css">
     <link rel="stylesheet" href="assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
+    <script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
     <!-- Purpose CSS -->
     <link rel="stylesheet" href="assets/css/purpose.css" id="stylesheet">
+    <link rel="stylesheet" href="assets/css/base.css" id="stylesheet">
+
+    
   </head>
 
   <body>
@@ -329,8 +333,8 @@
                   <div class="col-xl-5 col-lg-6 align-self-center">
                     <div class="text-center text-lg-left pb-5">
                       <h2 class="h1 text-muted mb-4">International Designers who have unique <span class="text-gradient typed" id="type-example-1" data-type-this="aesthetics., skill sets., cultural perspective., experience."></span></h2>
-                      <p class="lead lh-180 text-muted">Bringing in global talent to make your designs.</p>
-                      <!-- <div class="mt-5">
+                      <!-- <p class="lead lh-180 text-muted">Bringing in global talent to make your designs.</p> 
+                       <div class="mt-5">
                         <a href="#" class="btn btn-app-store hover-translate-y-n3 mr-lg-4 mb-4">
                           <i class="fab fa-apple"></i>
                           <span class="btn-inner--text">Download on the</span>
@@ -346,7 +350,14 @@
                   </div>
                   <div class="col-lg-6 ml-lg-auto align-self-end">
                     <div class="position-relative" style="z-index: 10;">
-                      <img alt="Image placeholder" src="assets/img/designer-prominance-1.png" class="img-fluid img-center">
+
+                      <div class="grid__item">
+                          <div class="grid__item-img" data-displacement="" data-intensity="-0.65" data-speedIn="1.2" data-speedOut="1.2">
+                            <img alt="Image placeholder" src="assets/img/designer-prominance-1.png" class="img-fluid img-center">
+                            <img alt="Image placeholder" src="assets/img/designer-prominance-2.png" class="img-fluid img-center">
+                          </div>          
+                        </div>                      
+
                     </div>
                   </div>
                 </div>
@@ -370,8 +381,8 @@
                       <li class="py-2">
                         <div class="d-flex align-items-center">
                           <div>
-                            <div class="icon icon-shape icon-primary icon-sm rounded-circle mr-3">
-                              <i class="fas fa-store-alt"></i>
+                            <div class=" mr-3">
+                              <img src="assets/img/icons/prominance-interio-icons-perspective.png">
                             </div>
                           </div>
                           <div>
@@ -382,8 +393,8 @@
                       <li class="py-2">
                         <div class="d-flex align-items-center">
                           <div>
-                            <div class="icon icon-shape icon-warning icon-sm rounded-circle mr-3">
-                              <i class="fas fa-palette"></i>
+                            <div class=" mr-3">
+                              <img src="assets/img/icons/prominance-interio-icons-design-skill.png">
                             </div>
                           </div>
                           <div>
@@ -394,8 +405,8 @@
                       <li class="py-2">
                         <div class="d-flex align-items-center">
                           <div>
-                            <div class="icon icon-shape icon-success icon-sm rounded-circle mr-3">
-                              <i class="fas fa-cog"></i>
+                            <div class=" mr-3">
+                              <img src="assets/img/icons/prominance-interio-icons-collaboration.png">
                             </div>
                           </div>
                           <div>
@@ -619,6 +630,30 @@
     <!-- Purpose JS -->
     <script src="assets/js/purpose.js"></script>
     <!-- Demo JS - remove it when starting your project -->
+    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/js/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <script src="assets/js/hover.js"></script>
+    <script>
+      imagesLoaded( document.querySelectorAll('img'), () => {
+        document.body.classList.remove('loading');
+      });
+
+      Array.from(document.querySelectorAll('.grid__item-img')).forEach((el) => {
+        const imgs = Array.from(el.querySelectorAll('img'));
+        new hoverEffect({
+          parent: el,
+          intensity: el.dataset.intensity || undefined,
+          speedIn: el.dataset.speedin || undefined,
+          speedOut: el.dataset.speedout || undefined,
+          easing: el.dataset.easing || undefined,
+          hover: el.dataset.hover || undefined,
+          image1: imgs[0].getAttribute('src'),
+          image2: imgs[1].getAttribute('src'),
+          displacementImage: el.dataset.displacement
+        });
+      });
+    </script>
     <script src="assets/js/demo.js"></script>
   </body>
 
