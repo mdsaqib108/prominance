@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="assets/libs/animate.css/animate.min.css">
     <link rel="stylesheet" href="assets/libs/swiper/dist/css/swiper.min.css">
     <link rel="stylesheet" href="assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
-    <script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
     <!-- Purpose CSS -->
     <link rel="stylesheet" href="assets/css/purpose.css" id="stylesheet">
     <link rel="stylesheet" href="assets/css/base.css" id="stylesheet">
@@ -348,16 +347,19 @@
                       </div> -->
                     </div>
                   </div>
+
                   <div class="col-lg-6 ml-lg-auto align-self-end">
                     <div class="position-relative" style="z-index: 10;">
-
-                      <div class="grid__item">
-                          <div class="grid__item-img" data-displacement="assets/img/8.jpg" data-intensity="-0.65" data-speedIn="1.2" data-speedOut="1.2">
-                            <img alt="Image placeholder" src="assets/img/designer-prominance-1.png" class="img-fluid img-center">
-                            <img alt="Image placeholder" src="assets/img/designer-prominance-2.png" class="img-fluid img-center">
-                          </div>          
-                        </div>                      
-
+                      <div id="carouselExampleSlidesOnly" class="carousel slide carousel-fade" data-ride="carousel">
+                          <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img alt="Image placeholder" src="assets/img/designer-prominance-1.png" class="img-fluid img-center">
+                            </div>
+                            <div class="carousel-item">
+                              <img alt="Image placeholder" src="assets/img/designer-prominance-2.png" class="img-fluid img-center">
+                            </div>
+                          </div>
+                        </div>
                     </div>
                   </div>
                 </div>
@@ -630,31 +632,12 @@
     <!-- Purpose JS -->
     <script src="assets/js/purpose.js"></script>
     <!-- Demo JS - remove it when starting your project -->
-    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/js/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
-    <script src="assets/js/hover.js"></script>
-    <script>
-      imagesLoaded( document.querySelectorAll('img'), () => {
-        document.body.classList.remove('loading');
-      });
-
-      Array.from(document.querySelectorAll('.grid__item-img')).forEach((el) => {
-        const imgs = Array.from(el.querySelectorAll('img'));
-        new hoverEffect({
-          parent: el,
-          intensity: el.dataset.intensity || undefined,
-          speedIn: el.dataset.speedin || undefined,
-          speedOut: el.dataset.speedout || undefined,
-          easing: el.dataset.easing || undefined,
-          hover: el.dataset.hover || undefined,
-          image1: imgs[0].getAttribute('src'),
-          image2: imgs[1].getAttribute('src'),
-          displacementImage: el.dataset.displacement
-        });
-      });
-    </script>
     <script src="assets/js/demo.js"></script>
+    <script>
+      $('.carousel').carousel({
+        interval: 3000
+      })
+    </script>
   </body>
 
 </html>
