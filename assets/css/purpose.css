@@ -21571,6 +21571,12 @@ textarea[resize=horizontal] {
   padding-bottom: 0rem
 }
 
+@media(max-width: 767.8px){
+  .navbar-top {
+    display: none !important;
+  }
+}
+
 .navbar-top .navbar-nav {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
