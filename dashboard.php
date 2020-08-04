@@ -440,7 +440,7 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="form-control-label">Birthday</label>
-                     <input type="text" class="form-control" data-toggle="date" placeholder="Select date">
+                      <input type="text" class="form-control" data-toggle="date" placeholder="Select date">
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -984,6 +984,7 @@
     <script src="assets/libs/typed.js/lib/typed.min.js"></script>
     <script src="assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script>
     <script src="assets/libs/jquery-countdown/dist/jquery.countdown.min.js"></script>
+    <script src="assets/libs/autosize/dist/autosize.min.js"></script>
     <script src="assets/libs/flatpickr/dist/flatpickr.min.js"></script>
     <!-- Purpose JS -->
     <script src="assets/js/purpose.js"></script>
