@@ -384,7 +384,7 @@
     <section class="slice">
       <div class="container">
         <div class="row row-grid">
-          <div class="col-lg-12 order-lg-2">
+          <div class="col-lg-9 order-lg-2">
             <!-- Change avatar 
             <div class="card bg-gradient-warning hover-shadow-lg">
               <div class="card-body py-3">
@@ -425,14 +425,14 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="form-control-label">First name</label>
-                    <input class="form-control" type="text" placeholder="Enter your first name">
+                    <label class="form-control-label">First name <span class="text-danger">*</span></label>
+                    <input class="form-control" type="text" placeholder="Enter your first name" required>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="form-control-label">Last name</label>
-                    <input class="form-control" type="text" placeholder="Also your last name">
+                    <label class="form-control-label">Last name <span class="text-danger">*</span></label>
+                    <input class="form-control" type="text" placeholder="Also your last name" required>
                   </div>
                 </div>
               </div>
@@ -457,18 +457,18 @@
               <div class="row align-items-center">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="form-control-label">Email</label>
-                    <input class="form-control" type="email" placeholder="name@exmaple.com">                    
+                    <label class="form-control-label">Email <span class="text-danger">*</span></label>
+                    <input class="form-control" type="email" placeholder="name@exmaple.com" required>                    
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="form-control-label">Username</label>
+                    <label class="form-control-label">Username <span class="text-danger">*</span></label>
                   <div class="input-group input-group-merge">
                       <div class="input-group-prepend">
                           <span class="input-group-text" id="basic-addon1">@</span>
                       </div>
-                      <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                      <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" required>
                   </div>              
                 </div>
                 </div>
@@ -501,14 +501,14 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="form-control-label">City</label>
-                      <input class="form-control" type="text" placeholder="City">
+                      <label class="form-control-label">City <span class="text-danger">*</span></label>
+                      <input class="form-control" type="text" placeholder="City" required>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label class="form-control-label">Country</label>
-                      <select class="form-control" data-toggle="select" title="Country" data-live-search="true" data-live-search-placeholder="Country">
+                      <label class="form-control-label">Country <span class="text-danger">*</span></label>
+                      <select class="form-control" data-toggle="select" title="Country" data-live-search="true" data-live-search-placeholder="Country" required>
                         <option value="AF">Afghanistan</option>
                         <option value="AX">Åland Islands</option>
                         <option value="AL">Albania</option>
@@ -788,8 +788,8 @@
                   <div class="col">
                     <div class="form-group">
                       <div class="form-group">
-                        <label class="form-control-label">Description </label>
-                        <textarea class="form-control" placeholder="Tell us a few words about yourself" rows="3"></textarea>
+                        <label class="form-control-label">Description <span class="text-danger">*</span></label>
+                        <textarea class="form-control" placeholder="Tell us a few words about yourself" rows="3" required></textarea>
                       </div>
                     </div>
                   </div>
@@ -798,8 +798,8 @@
                   <div class="col">
                     <div class="form-group">
                       <div class="form-group">
-                        <label class="form-control-label">Design Style</label>
-                        <textarea class="form-control" placeholder="Tell us a few words about yourself" rows="3"></textarea>
+                        <label class="form-control-label">Design Style <span class="text-danger">*</span></label>
+                        <textarea class="form-control" placeholder="Tell us a few words about yourself" rows="3" required></textarea>
                       </div>
                     </div>
                   </div>
@@ -808,8 +808,8 @@
                   <div class="col">
                     <div class="form-group">
                       <div class="form-group">
-                        <label class="form-control-label">Expertise</label>
-                        <textarea class="form-control" placeholder="Tell us a few words about yourself" rows="3"></textarea>
+                        <label class="form-control-label">Expertise <span class="text-danger">*</span></label>
+                        <textarea class="form-control" placeholder="Tell us a few words about yourself" rows="3" required></textarea>
                       </div>
                     </div>
                   </div>
@@ -818,8 +818,8 @@
                   <div class="col">
                     <div class="form-group">
                       <div class="form-group">
-                        <label class="form-control-label">Experience</label>
-                        <textarea class="form-control" placeholder="Tell us a few words about yourself" rows="3"></textarea>
+                        <label class="form-control-label">Experience <span class="text-danger">*</span></label>
+                        <textarea class="form-control" placeholder="Tell us a few words about yourself" rows="3" required></textarea>
                       </div>
                     </div>
                   </div>
@@ -840,53 +840,35 @@
               </div>
             </form>
           </div>
-          <!-- <div class="col-lg-3 order-lg-1">
+          <div class="col-lg-3 order-lg-1">
             <div data-toggle="sticky" data-sticky-offset="30" data-negative-margin=".card-profile-cover">
               <div class="card">
                 <div class="card-header py-3">
                   <span class="h6">Settings</span>
                 </div>
                 <div class="list-group list-group-sm list-group-flush">
-                  <a href="account-profile.html" class="list-group-item list-group-item-action d-flex justify-content-between">
+                  <a href="dashboard.php" class="list-group-item list-group-item-action d-flex justify-content-between">
                     <div>
                       <i class="fas fa-user-circle mr-2"></i>
                       <span>Profile</span>
                     </div>
-                    <div>
-                      <i class="fas fa-angle-right"></i>
-                    </div>
                   </a>
-                  <a href="account-settings.html" class="list-group-item list-group-item-action d-flex justify-content-between">
+                  <a href="account-settings.php" class="list-group-item list-group-item-action d-flex justify-content-between">
                     <div>
                       <i class="fas fa-cog mr-2"></i>
                       <span>Settings</span>
                     </div>
-                    <div>
-                      <i class="fas fa-angle-right"></i>
-                    </div>
                   </a>
-                  <a href="account-billing.html" class="list-group-item list-group-item-action d-flex justify-content-between">
+                  <a href="logout.php" class="list-group-item list-group-item-action d-flex justify-content-between">
                     <div>
                       <i class="fas fa-credit-card mr-2"></i>
-                      <span>Billing</span>
-                    </div>
-                    <div>
-                      <i class="fas fa-angle-right"></i>
-                    </div>
-                  </a>
-                  <a href="account-notifications.html" class="list-group-item list-group-item-action d-flex justify-content-between">
-                    <div>
-                      <i class="fas fa-bell mr-2"></i>
-                      <span>Notifications</span>
-                    </div>
-                    <div>
-                      <i class="fas fa-angle-right"></i>
+                      <span>Log Out</span>
                     </div>
                   </a>
                 </div>
               </div>
             </div>
-          </div> -->
+          </div>
         </div>
       </div>
     </section>
