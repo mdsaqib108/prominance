@@ -3,7 +3,6 @@ define('DB_HOST','localhost');
 define('DB_USER','root');
 define('DB_PASS','');
 define('DB_NAME','prominance');
-define('LIVE_PATH', 'http://localhost/prominance');
 
 
 // define('DB_HOST','182.50.133.87:3306');

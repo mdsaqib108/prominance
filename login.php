@@ -22,10 +22,9 @@ if($query->rowCount() > 0)
  $_SESSION['stdid']=$result->id;
  $_SESSION['login']=$_POST['un'];
  $_SESSION['email']=$result->email;
- $_SESSION['name']=$result->name;
- $_SESSION['display_name']=$result->display_name;
- $_SESSION['role']=$result->role;
-echo "<script type='text/javascript'> document.location ='index.html'; </script>";
+ $_SESSION['first_name']=$result->first_name;
+ $_SESSION['username']=$result->username;
+echo "<script type='text/javascript'> document.location ='dashboard.php'; </script>";
 }
 }
 else{

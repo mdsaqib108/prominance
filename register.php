@@ -4,6 +4,6 @@ include( dirname(__FILE__) . DIRECTORY_SEPARATOR . 'classes' . DIRECTORY_SEPARAT
 
 $create_user = new Create_user();
 $new_user = $create_user->new_user();
-header('location:index.html');
+header('location:dashboard.php');
 
 ?>
