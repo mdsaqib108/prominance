@@ -6,33 +6,73 @@ if(strlen($_SESSION['login'])==0)
   {
 header('location:login.html');
 }
-else { 
-if(isset($_POST['change']))
-  {
-$password=md5($_POST['password']);
-$newpassword=md5($_POST['newpassword']);
-$email=$_SESSION['login'];
-  $sql ="SELECT password FROM users WHERE email=:email and password=:password";
-$query= $dbh -> prepare($sql);
-$query-> bindParam(':email', $email, PDO::PARAM_STR);
-$query-> bindParam(':password', $password, PDO::PARAM_STR);
-$query-> execute();
-$results = $query -> fetchAll(PDO::FETCH_OBJ);
-if($query -> rowCount() > 0)
-{
-$con="update users set password=:newpassword where email=:email";
-$chngpwd1 = $dbh->prepare($con);
-$chngpwd1-> bindParam(':email', $email, PDO::PARAM_STR);
-$chngpwd1-> bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
-$chngpwd1->execute();
-$msg="Your Password succesfully changed";
-}
 else {
-$error="Your current password is wrong";  
-}
-}
+  if(isset($_POST['cover_img']))
+    {    
+    $sid=$_SESSION['stdid'];  
 
-?>
+    $thinksoftResumeName = $_FILES['project_1']['name'];
+      $thinksoftResumePath = $_FILES['project_1']['tmp_name'];
+      $fileInfo = pathinfo($_FILES["project_1"]["name"]);
+      $without_extension = substr($thinksoftResumeName, 0, strrpos($thinksoftResumeName, "."));
+      $fileName = $without_extension . '_'. uniqid(). '.' . $fileInfo['extension'];
+
+      $thinksoftResumeName2 = $_FILES['project_2']['name'];
+      $thinksoftResumePath2 = $_FILES['project_2']['tmp_name'];
+      $fileInfo2 = pathinfo($_FILES["project_2"]["name"]);
+      $without_extension2 = substr($thinksoftResumeName2, 0, strrpos($thinksoftResumeName2, "."));
+      $fileName2 = $without_extension2 . '_'. uniqid(). '.' . $fileInfo2['extension'];
+
+      $thinksoftResumeName3 = $_FILES['project_3']['name'];
+      $thinksoftResumePath3 = $_FILES['project_3']['tmp_name'];
+      $fileInfo3 = pathinfo($_FILES["project_3"]["name"]);
+      $without_extension3 = substr($thinksoftResumeName3, 0, strrpos($thinksoftResumeName3, "."));
+      $fileName3 = $without_extension3 . '_'. uniqid(). '.' . $fileInfo3['extension'];
+
+      $thinksoftResumeName4 = $_FILES['project_4']['name'];
+      $thinksoftResumePath4 = $_FILES['project_4']['tmp_name'];
+      $fileInfo4 = pathinfo($_FILES["project_4"]["name"]);
+      $without_extension4 = substr($thinksoftResumeName4, 0, strrpos($thinksoftResumeName4, "."));
+      $fileName4 = $without_extension4 . '_'. uniqid(). '.' . $fileInfo4['extension'];
+
+      $thinksoftResumeName5 = $_FILES['project_5']['name'];
+      $thinksoftResumePath5 = $_FILES['project_5']['tmp_name'];
+      $fileInfo5 = pathinfo($_FILES["project_5"]["name"]);
+      $without_extension5 = substr($thinksoftResumeName5, 0, strrpos($thinksoftResumeName5, "."));
+      $fileName5 = $without_extension5 . '_'. uniqid(). '.' . $fileInfo5['extension'];
+
+      $thinksoftResumeName6 = $_FILES['project_6']['name'];
+      $thinksoftResumePath6 = $_FILES['project_6']['tmp_name'];
+      $fileInfo6 = pathinfo($_FILES["project_6"]["name"]);
+      $without_extension6 = substr($thinksoftResumeName6, 0, strrpos($thinksoftResumeName6, "."));
+      $fileName6 = $without_extension6 . '_'. uniqid(). '.' . $fileInfo6['extension'];
+
+    move_uploaded_file($thinksoftResumePath,"content/$fileName");
+    move_uploaded_file($thinksoftResumePath2,"content/$fileName2");
+    move_uploaded_file($thinksoftResumePath3,"content/$fileName3");
+    move_uploaded_file($thinksoftResumePath4,"content/$fileName4");
+    move_uploaded_file($thinksoftResumePath5,"content/$fileName5");
+    move_uploaded_file($thinksoftResumePath6,"content/$fileName6");
+
+
+
+
+    $sql="update users set project_1=:fileName, project_2=:fileName2 , project_3=:fileName3, project_4=:fileName4, project_5=:fileName5, project_6=:fileName6 where id=:sid";
+
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':sid',$sid,PDO::PARAM_STR);
+    $query->bindParam(':fileName',$fileName,PDO::PARAM_STR);
+    $query->bindParam(':fileName2',$fileName2,PDO::PARAM_STR);
+    $query->bindParam(':fileName3',$fileName3,PDO::PARAM_STR);
+    $query->bindParam(':fileName4',$fileName4,PDO::PARAM_STR);
+    $query->bindParam(':fileName5',$fileName5,PDO::PARAM_STR);
+    $query->bindParam(':fileName6',$fileName6,PDO::PARAM_STR);
+    $query->execute();
+
+    echo '<script>alert("Your cover has been updated")</script>';
+    }
+
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,22 +89,10 @@ $error="Your current password is wrong";
     <link rel="stylesheet" href="assets/libs/animate.css/animate.min.css">
     <link rel="stylesheet" href="assets/libs/swiper/dist/css/swiper.min.css">
     <link rel="stylesheet" href="assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="assets/libs/flatpickr/dist/flatpickr.min.css">
     <!-- Purpose CSS -->
     <link rel="stylesheet" href="assets/css/purpose.css" id="stylesheet">
   </head>
-
-  <script type="text/javascript">
-    function valid()
-    {
-    if(document.chngpwd.newpassword.value!= document.chngpwd.confirmpassword.value)
-    {
-    alert("New Password and Confirm Password Field do not match  !!");
-    document.chngpwd.confirmpassword.focus();
-    return false;
-    }
-    return true;
-    }
-    </script>
 
   <body>
     <header class="header" id="header-main">
@@ -366,41 +394,41 @@ $error="Your current password is wrong";
         </div>
       </nav>
     </header>
-  <div class="main-content">
-    <!-- Header (account) -->
-    <section class="bg-gradient-primary d-flex align-items-end" data-offset-top="#header-main">
-      <!-- Header container -->
-      <div class="container pt-4 pt-lg-0">
-        <div class="row">
-          <div class=" col-lg-12">
-            <!-- Salute + Small stats -->
-            <div class="row align-items-center mb-4">
-              <div class="col-md-5 mb-4 mb-md-0">
-                <span class="h2 mb-0 text-white d-block">Hello, 
-                  <?php
+    <div class="main-content">
+      <!-- Header (account) -->
+      <section class=" bg-gradient-primary d-flex align-items-end" data-offset-top="#header-main">
+        <!-- Header container -->
+        <div class="container pt-4 pt-lg-0">
+          <div class="row">
+            <div class=" col-lg-12">
+              <!-- Salute + Small stats -->
+              <div class="row align-items-center mb-4">
+                <div class="col-md-5 mb-4 mb-md-0">
+                  <span class="h2 mb-0 text-white d-block">Hello,
+                    <?php
                   if (isset($_SESSION['login']))
                   {
                       echo $_SESSION['first_name'];
                   }
                   ?>
-                </span>
-                <span class="text-white">Have a nice day!</span>
+                  </span>
+                  <span class="text-white">Have a nice day!</span>
+                </div>
               </div>
-            </div>
-            <!-- Account navigation -->
-            <div class="d-flex">
-              <a class="btn btn-icon btn-group-nav shadow btn-neutral">
-                <span class="btn-inner--icon"><i class="fas fa-user"></i></span>
-                <span class="btn-inner--text d-none d-md-inline-block">
-                  <?php
+              <!-- Account navigation -->
+              <div class="d-flex">
+                <a class="btn btn-icon btn-group-nav shadow btn-neutral">
+                  <span class="btn-inner--icon"><i class="fas fa-user"></i></span>
+                  <span class="btn-inner--text d-none d-md-inline-block">
+                    <?php
                   if (isset($_SESSION['login']))
                   {
                       echo $_SESSION['username'];
                   }
                   ?>
-                </span>
-              </a>
-              <!-- <div class="btn-group btn-group-nav shadow btn-neutral ml-auto" role="group" aria-label="Basic example">
+                  </span>
+                </a>
+                <!-- <div class="btn-group btn-group-nav shadow btn-neutral ml-auto" role="group" aria-label="Basic example">
                 <div class="btn-group" role="group">
                   <button id="btn-group-settings" type="button" class="btn btn-neutral btn-icon" data-toggle="dropdown" data-offset="0,8" aria-haspopup="true" aria-expanded="false">
                     <span class="btn-inner--icon"><i class="fas fa-sliders-h"></i></span>
@@ -437,226 +465,334 @@ $error="Your current password is wrong";
                   </div>
                 </div>
               </div> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-
-
-    <section class="slice">
-      <div class="container">
-        <div class="row row-grid">
-          <div class="col-lg-9 order-lg-2">
-            <div class="align-items-center">
-              <?php if($error){?>
-              <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Error</strong> <?php echo htmlentities($error); ?> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <?php } 
-              else if($msg){?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Success</strong> <?php echo htmlentities($msg); ?> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <?php }?> 
-
-            </div>
-            <form role="form" method="post" onSubmit="return valid();" name="chngpwd">
-              <!-- Password -->
-              <div class="actions-toolbar py-2 mb-4">
-                <h5 class="mb-1">Change password</h5>
-                <p class="text-sm text-muted mb-0">You can help us, by filling your data, create you a much better experience using our website.</p>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="form-control-label">Current password</label>
-                    <input class="form-control" type="password" name="password">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="form-control-label">New password</label>
-                    <input class="form-control" type="password" name="newpassword">
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="form-control-label">Confirm password</label>
-                    <input class="form-control" type="password" name="confirmpassword">
-                  </div>
-                </div>
-              </div>
-              <div class="mt-4">
-                <button type="submit" name="change" class="btn btn-sm bg-gradient-primary text-white">Update password</button>
-                <a href="#" class="btn btn-sm btn-secondary">I forgot my password</a>
-              </div>
-            </form>
-            <!-- Username -->
-            <div class="mt-5 pt-5 delimiter-top">
-              <div class="actions-toolbar py-2 mb-4">
-                <h5 class="mb-1">Change username</h5>
-                <p class="text-sm text-muted mb-0">You can help us, by filling your data, create you a much better experience using our website.</p>
-              </div>
-              <!-- Button trigger modal -->
-              <button type="button" class="btn btn-sm bg-gradient-primary text-white" data-toggle="modal" data-target="#modal-change-username">Change username</button>
-              <!-- Modal -->
-              <div class="modal fade" id="modal-change-username" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                  <form>
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <div class="modal-title d-flex align-items-center" id="modal-title-change-username">
-                          <div>
-                            <div class="icon icon-sm icon-shape icon-info rounded-circle shadow mr-3">
-                              <i class="fas fa-user"></i>
-                            </div>
-                          </div>
-                          <div>
-                            <h6 class="mb-0">Change username</h6>
-                          </div>
-                        </div>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <div class="row">
-                          <div class="col-sm-6">
-                            <div class="form-group">
-                              <label class="form-control-label">Old username</label>
-                              <?php
-                                $sid=$_SESSION['stdid'];
-                                $sql= "SELECT * from users where id=:sid";
-                                $query = $dbh -> prepare ($sql);
-                                $query-> bindParam(':sid' , $sid , PDO::PARAM_STR);
-                                $query->execute();
-                                $results= $query->fetchAll(PDO::FETCH_OBJ);
-                                $cnt=1;
-                                if($query->rowCount() > 0)
-                                {
-                                  foreach($results as $result)
-                                  {
-
-                              ?>
-                              <input type="text" name="username" class="form-control" placeholder="Username" value="<?php echo htmlentities($result->username);?>" aria-label="Username" aria-describedby="basic-addon1" required readonly>
-                              <?php }} ?>
-                            </div>
-                          </div>
-                          <div class="col-sm-6">
-                            <div class="form-group">
-                              <label class="form-control-label">New username</label>
-                              <input class="form-control" type="text" placeholder="New Username">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="px-5 pt-4 mt-4 delimiter-top text-center">
-                          <p class="text-muted text-sm">You will receive an email where you will be asked to confirm this action in order to be completed.</p>
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Change my username</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-            <!-- Delete -->
-            <div class="mt-5 pt-5 delimiter-top">
-              <div class="actions-toolbar py-2 mb-4">
-                <h5 class="mb-1">Delete account</h5>
-                <p class="text-sm text-muted mb-0">Deleting your account is ireversible and can affect past activites.</p>
-              </div>
-              <!-- Button trigger modal -->
-              <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-delete-account">Delete account</button>
-              <!-- Modal -->
-              <div class="modal modal-danger fade" id="modal-delete-account" tabindex="-1" role="dialog" aria-labelledby="modal-delete-account" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                  <form class="form-danger">
-                    <div class="modal-content">
-                      <div class="modal-body">
-                        <div class="text-center">
-                          <i class="fas fa-exclamation-circle fa-3x opacity-8"></i>
-                          <h5 class="text-white mt-4">Should we stop now?</h5>
-                          <p class="text-sm text-sm">All your data will be erased. You will no longer be billed, and your username will be available to anyone.</p>
-                        </div>
-                        <div class="form-group">
-                          <label class="form-control-label text-white">You email or username</label>
-                          <input class="form-control" type="text">
-                        </div>
-                        <div class="form-group">
-                          <label class="form-control-label text-white">To verify, type <span class="font-italic">delete my account</span> below</label>
-                          <input class="form-control" type="text">
-                        </div>
-                        <div class="form-group">
-                          <label class="form-control-label text-white">Your password</label>
-                          <input class="form-control" type="password">
-                        </div>
-                        <div class="mt-4">
-                          <button type="button" class="btn btn-block btn-sm btn-white text-danger">Delete my account</button>
-                          <button type="button" class="btn btn-block btn-sm btn-link text-light mt-4" data-dismiss="modal">Not this time</button>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 order-lg-1">
-            <div data-toggle="sticky" data-sticky-offset="30" data-negative-margin=".card-profile-cover">
-              <div class="card">
-                <div class="card-header py-3">
-                  <span class="h6">Settings</span>
-                </div>
-                <div class="list-group list-group-sm list-group-flush">
-                  <a href="dashboard.php" class="list-group-item list-group-item-action d-flex justify-content-between">
-                    <div>
-                      <i class="fas fa-user-circle mr-2"></i>
-                      <span>Profile</span>
-                    </div>
-                  </a>
-                  <a href="cover-image.php" class="list-group-item list-group-item-action d-flex justify-content-between">
-                    <div>
-                      <i class="fas fa-image mr-2"></i>
-                      <span>Cover Image</span>
-                    </div>
-                  </a>
-                  <a href="project-image.php" class="list-group-item list-group-item-action d-flex justify-content-between">
-                    <div>
-                      <i class="fas fa-building mr-2"></i>
-                      <span>Project Images</span>
-                    </div>
-                  </a>
-                  <a href="account-settings.php" class="list-group-item list-group-item-action d-flex justify-content-between">
-                    <div>
-                      <i class="fas fa-cog mr-2"></i>
-                      <span>Settings</span>
-                    </div>
-                  </a>
-                  <a href="logout.php" class="list-group-item list-group-item-action d-flex justify-content-between">
-                    <div>
-                      <i class="fas fa-credit-card mr-2"></i>
-                      <span>Log Out</span>
-                    </div>
-                  </a>
-                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </div>
-  <footer id="footer-main">
+      </section>
+
+      <section class="slice">
+        <div class="container">
+          <div class="row row-grid">
+            <div class="col-lg-9 order-lg-2">
+              <!-- Change avatar 
+            <div class="card bg-gradient-warning hover-shadow-lg">
+              <div class="card-body py-3">
+                <div class="row row-grid align-items-center">
+                  <div class="col-lg-8">
+                    <div class="media align-items-center">
+                      <a href="#" class="avatar avatar-lg rounded-circle mr-3">
+                        <img alt="Image placeholder" src="assets/img/theme/light/team-1-800x800.jpg">
+                      </a>
+                      <div class="media-body">
+                        <h5 class="text-white mb-0">Heather Wright</h5>
+                        <div>
+                          <form>
+                            <input type="file" name="file-1[]" id="file-1" class="custom-input-file custom-input-file-link" data-multiple-caption="{count} files selected" multiple />
+                            <label for="file-1">
+                              <span class="text-white">Change avatar</span>
+                            </label>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right d-none d-lg-block">
+                    <a href="#" class="btn btn-sm btn-white rounded-pill btn-icon shadow">
+                      <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
+                      <span class="btn-inner--text">Upgrade to Pro</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>-->
+              <!-- General information form -->
+
+              <form role="form" action="project-image.php" method="POST" enctype="multipart/form-data">
+                <?php
+                $sid=$_SESSION['stdid'];
+                $sql= "SELECT * from users where id=:sid";
+                $query = $dbh -> prepare ($sql);
+                $query-> bindParam(':sid' , $sid , PDO::PARAM_STR);
+                $query->execute();
+                $results= $query->fetchAll(PDO::FETCH_OBJ);
+                $cnt=1;
+                if($query->rowCount() > 0)
+                {
+                  foreach($results as $result)
+                  {
+
+              ?>
+
+
+
+
+
+                <!-- Address -->
+                <div class="actions-toolbar py-2 mb-4">
+
+                </div>
+
+                <!-- Skills 
+              <div class="pt-5 mt-5 delimiter-top">
+                <div class="actions-toolbar py-2 mb-4">
+                  <h5 class="mb-1">Skills</h5>
+                  <p class="text-sm text-muted mb-0">Show off you skills using our tags input control.</p>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label class="sr-only">Skills</label>
+                      <input type="text" class="form-control" value="HTML, CSS3, Bootstrap, Photoshop, VueJS" data-toggle="tags" placeholder="Type here..." />
+                    </div>
+                  </div>
+                </div>
+              </div>-->
+                <!-- Description -->
+                <div class="">
+                  <div class="actions-toolbar py-2 mb-4">
+                    <h5 class="mb-1">Project Image</h5>
+                    <p class="text-sm text-muted mb-0">Upload your Project Image</p>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-10">
+                      <div class="form-group">
+                        <label class="form-control-label">Project Image 1</label>
+                        <?php if($result->project_1==!NULL) {?>
+                        <input class="form-control" name="project_1" type="hidden" value="<?php echo htmlentities($result->project_1);?>">
+                        <?php } else {?>
+
+                        <input class="form-control" name="project_1" type="file" value="<?php echo htmlentities($result->project_1);?>">
+                        <?php } ?>
+                      </div>
+                    </div>
+
+                    <?php if($result->project_1==!NULL) {?>
+
+                    <div class="col-lg-12" style="max-width: 17%;">
+                      <div>  <a href="content/<?php echo htmlentities($result->project_1);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_1);?>" class="img-fluid rounded shadow-lg"> </a>
+
+                      </div>
+                    </div>
+
+                    <?php } else {?>
+
+                    <span>No Project Image Uploaded</span>
+
+
+
+                    <?php } ?>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-10">
+                      <div class="form-group">
+                        <label class="form-control-label">Project Image 2</label>
+                        <?php if($result->project_2==!NULL) {?>
+                        <input class="form-control" name="project_2" type="hidden" value="<?php echo htmlentities($result->project_2);?>">
+                        <?php } else {?>
+
+                        <input class="form-control" name="project_2" type="file" value="<?php echo htmlentities($result->project_2);?>">
+                        <?php } ?>
+                      </div>
+                    </div>
+
+                    <?php if($result->project_2==!NULL) {?>
+
+                    <div class="col-lg-12" style="max-width: 17%;">
+                      <div>  <a href="content/<?php echo htmlentities($result->project_2);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_2);?>" class="img-fluid rounded shadow-lg"> </a>
+
+                      </div>
+                    </div>
+
+                    <?php } else {?>
+
+                    <span>No Project Image Uploaded</span>
+
+
+
+                    <?php } ?>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-md-10">
+                      <div class="form-group">
+                        <label class="form-control-label">Project Image 3</label>
+                        <?php if($result->project_3==!NULL) {?>
+                        <input class="form-control" name="project_3" type="hidden" value="<?php echo htmlentities($result->project_3);?>">
+                        <?php } else {?>
+
+                        <input class="form-control" name="project_3" type="file" value="<?php echo htmlentities($result->project_3);?>">
+                        <?php } ?>
+                      </div>
+                    </div>
+
+                    <?php if($result->project_3==!NULL) {?>
+
+                    <div class="col-lg-12" style="max-width: 17%;">
+                      <div>  <a href="content/<?php echo htmlentities($result->project_3);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_3);?>" class="img-fluid rounded shadow-lg"> </a>
+
+                      </div>
+                    </div>
+
+                    <?php } else {?>
+
+                    <span>No Project Image Uploaded</span>
+
+
+
+                    <?php } ?>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-md-10">
+                      <div class="form-group">
+                        <label class="form-control-label">Project Image 4</label>
+                        <?php if($result->project_4==!NULL) {?>
+                        <input class="form-control" name="project_4" type="hidden" value="<?php echo htmlentities($result->project_4);?>">
+                        <?php } else {?>
+
+                        <input class="form-control" name="project_4" type="file" value="<?php echo htmlentities($result->project_4);?>">
+                        <?php } ?>
+                      </div>
+                    </div>
+
+                    <?php if($result->project_4==!NULL) {?>
+
+                    <div class="col-lg-12" style="max-width: 17%;">
+                      <div>  <a href="content/<?php echo htmlentities($result->project_4);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_4);?>" class="img-fluid rounded shadow-lg"> </a>
+
+                      </div>
+                    </div>
+
+                    <?php } else {?>
+
+                    <span>No Project Image Uploaded</span>
+
+
+
+                    <?php } ?>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-10">
+                      <div class="form-group">
+                        <label class="form-control-label">Project Image 5</label>
+                        <?php if($result->project_5==!NULL) {?>
+                        <input class="form-control" name="project_5" type="hidden" value="<?php echo htmlentities($result->project_5);?>">
+                        <?php } else {?>
+
+                        <input class="form-control" name="project_5" type="file" value="<?php echo htmlentities($result->project_5);?>">
+                        <?php } ?>
+                      </div>
+                    </div>
+
+                    <?php if($result->project_5==!NULL) {?>
+
+                    <div class="col-lg-12" style="max-width: 17%;">
+                      <div>  <a href="content/<?php echo htmlentities($result->project_5);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_5);?>" class="img-fluid rounded shadow-lg"> </a>
+
+                      </div>
+                    </div>
+
+                    <?php } else {?>
+
+                    <span>No Project Image Uploaded</span>
+
+
+
+                    <?php } ?>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-10">
+                      <div class="form-group">
+                        <label class="form-control-label">Project Image 6</label>
+                        <?php if($result->project_6==!NULL) {?>
+                        <input class="form-control" name="project_6" type="hidden" value="<?php echo htmlentities($result->project_6);?>">
+                        <?php } else {?>
+
+                        <input class="form-control" name="project_6" type="file" value="<?php echo htmlentities($result->project_6);?>">
+                        <?php } ?>
+                      </div>
+                    </div>
+
+                    <?php if($result->project_6==!NULL) {?>
+
+                    <div class="col-lg-12" style="max-width: 17%;">
+                      <div>  <a href="content/<?php echo htmlentities($result->project_6);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_6);?>" class="img-fluid rounded shadow-lg"> </a>
+
+                      </div>
+                    </div>
+
+                    <?php } else {?>
+
+                    <span>No Project Image Uploaded</span>
+
+
+
+                    <?php } ?>
+                  </div>
+
+
+
+                </div>
+                <!-- Save changes buttons -->
+                <div class="pt-5 mt-5 delimiter-top text-center">
+                  <button type="submit" name="cover_img" class="btn btn-sm bg-gradient-primary text-white">Save changes</button>
+                  <!-- <button type="button" class="btn btn-link text-muted">Cancel</button> -->
+                </div>
+                <?php }} ?>
+              </form>
+            </div>
+            <div class="col-lg-3 order-lg-1">
+              <div data-toggle="sticky" data-sticky-offset="30" data-negative-margin=".card-profile-cover">
+                <div class="card">
+                  <div class="card-header py-3">
+                    <span class="h6">Settings</span>
+                  </div>
+                  <div class="list-group list-group-sm list-group-flush">
+                    <a href="dashboard.php" class="list-group-item list-group-item-action d-flex justify-content-between">
+                      <div>
+                        <i class="fas fa-user-circle mr-2"></i>
+                        <span>Profile</span>
+                      </div>
+                    </a>
+                    <a href="cover-image.php" class="list-group-item list-group-item-action d-flex justify-content-between">
+                      <div>
+                        <i class="fas fa-image mr-2"></i>
+                        <span>Cover Image</span>
+                      </div>
+                    </a>
+                    <a href="project-image.php" class="list-group-item list-group-item-action d-flex justify-content-between">
+                      <div>
+                        <i class="fas fa-building mr-2"></i>
+                        <span>Project Images</span>
+                      </div>
+                    </a>
+                    <a href="account-settings.php" class="list-group-item list-group-item-action d-flex justify-content-between">
+                      <div>
+                        <i class="fas fa-cog mr-2"></i>
+                        <span>Settings</span>
+                      </div>
+                    </a>
+                    <a href="logout.php" class="list-group-item list-group-item-action d-flex justify-content-between">
+                      <div>
+                        <i class="fas fa-credit-card mr-2"></i>
+                        <span>Log Out</span>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer id="footer-main">
       <div class="footer footer-dark" style="background: linear-gradient(90deg, #3dc1ed 0%, #7ac49d 100%);">
         <div class="container">
           <div class="row pt-md">
@@ -749,6 +885,8 @@ $error="Your current password is wrong";
     <script src="assets/libs/typed.js/lib/typed.min.js"></script>
     <script src="assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script>
     <script src="assets/libs/jquery-countdown/dist/jquery.countdown.min.js"></script>
+    <script src="assets/libs/autosize/dist/autosize.min.js"></script>
+    <script src="assets/libs/flatpickr/dist/flatpickr.min.js"></script>
     <!-- Purpose JS -->
     <script src="assets/js/purpose.js"></script>
     <!-- Demo JS - remove it when starting your project -->
@@ -756,5 +894,4 @@ $error="Your current password is wrong";
   </body>
 
 </html>
-
 <?php } ?>

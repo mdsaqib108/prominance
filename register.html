@@ -16,7 +16,37 @@
     <link rel="stylesheet" href="assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
     <!-- Purpose CSS -->
     <link rel="stylesheet" href="assets/css/purpose.css" id="stylesheet">
+
+    <script type="text/javascript">
+      function valid() {
+        if (document.signup.password.value != document.signup.confirmpassword.value) {
+          alert("Password and Confirm Password Field do not match  !!");
+          document.signup.confirmpassword.focus();
+          return false;
+        }
+        return true;
+      }
+
+    </script>
+    <script>
+      function checkAvailability() {
+        $("#loaderIcon").show();
+        jQuery.ajax({
+          url: "check_availability.php",
+          data: 'email=' + $("#email").val(),
+          type: "POST",
+          success: function(data) {
+            $("#user-availability-status").html(data);
+            $("#loaderIcon").hide();
+          },
+          error: function() {}
+        });
+      }
+
+    </script>
   </head>
+  
+    
 
   <body>
     <header class="header" id="header-main">
@@ -339,7 +369,7 @@
                     <h6 class="h3">Create account</h6>
                   </div>
                   <span class="clearfix"></span>
-                  <form role="form" action="register.php" method="POST" enctype="multipart/form-data">
+                  <form role="form" action="register.php" method="POST" onSubmit="return valid();" enctype="multipart/form-data">
                     <div class="row">
                       <div class="form-group col-6">
                       <label class="form-control-label">First Name</label>
@@ -364,13 +394,14 @@
                     <div class="form-group">
                       <label class="form-control-label">Email address</label>
                       <div class="input-group input-group-merge">
-                        <input type="email" name="email" class="form-control" id="input-email" placeholder="name@example.com" required>
+                        <input type="email" name="email" class="form-control" onBlur="checkAvailability()" placeholder="name@example.com" required>
                       </div>
+                        <span id="user-availability-status"></span>
                     </div>
                     <div class="form-group mb-4">
                       <label class="form-control-label">Password</label>
                       <div class="input-group input-group-merge">
-                        <input type="password" class="form-control" id="input-password" placeholder="********" required>
+                        <input type="password" class="form-control" name="confirmpassword" id="input-password" placeholder="********" required>
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="fas fa-eye"></i>
@@ -503,3 +534,18 @@
         </div>
       </div>
     </footer>
+    <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
+    <script src="assets/js/purpose.core.js"></script>
+    <!-- Page JS -->
+    <script src="assets/libs/swiper/dist/js/swiper.min.js"></script>
+    <script src="assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="assets/libs/typed.js/lib/typed.min.js"></script>
+    <script src="assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script>
+    <script src="assets/libs/jquery-countdown/dist/jquery.countdown.min.js"></script>
+    <!-- Purpose JS -->
+    <script src="assets/js/purpose.js"></script>
+    <!-- Demo JS - remove it when starting your project -->
+    <script src="assets/js/demo.js"></script>
+  </body>
+
+</html>

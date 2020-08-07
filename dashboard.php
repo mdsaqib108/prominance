@@ -27,8 +27,23 @@ else {
     $specialisation=$_POST['specialisation'];
     $personal_website=$_POST['personal_website'];
 
+    $thinksoftResumeName = $_FILES['profile']['name'];
+      $thinksoftResumePath = $_FILES['profile']['tmp_name'];
+      $fileInfo1 = pathinfo($_FILES["profile"]["name"]);
+      $without_extension = substr($thinksoftResumeName, 0, strrpos($thinksoftResumeName, "."));
+      $fileName1 = $without_extension . '_'. uniqid(). '.' . $fileInfo1['extension'];
 
-    $sql="update users set first_name=:first_name,last_name=:last_name,birthday=:birthday,gender=:gender,email=:email,username=:username,phone=:phone,address=:address,city=:city,country=:country,description=:description,design_style=:design_style,expertise=:expertise,experience=:experience,specialisation=:specialisation,personal_website=:personal_website where id=:sid";
+    
+
+    move_uploaded_file($thinksoftResumePath,"content/$fileName1");
+
+    
+
+
+
+
+    $sql="update users set first_name=:first_name,last_name=:last_name,birthday=:birthday,gender=:gender,email=:email,username=:username,phone=:phone,address=:address,city=:city,country=:country,description=:description,design_style=:design_style,expertise=:expertise,experience=:experience,specialisation=:specialisation,personal_website=:personal_website,profile=:fileName1 where id=:sid";
+
     $query = $dbh->prepare($sql);
     $query->bindParam(':sid',$sid,PDO::PARAM_STR);
     $query->bindParam(':first_name',$first_name,PDO::PARAM_STR);
@@ -47,10 +62,12 @@ else {
     $query->bindParam(':experience',$experience,PDO::PARAM_STR);
     $query->bindParam(':specialisation',$specialisation,PDO::PARAM_STR);
     $query->bindParam(':personal_website',$personal_website,PDO::PARAM_STR);
+    $query->bindParam(':fileName1',$fileName1,PDO::PARAM_STR);
     $query->execute();
 
     echo '<script>alert("Your profile has been updated")</script>';
     }
+
   ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -407,7 +424,7 @@ else {
                   ?>
                 </span>
               </a>
-              <div class="btn-group btn-group-nav shadow btn-neutral ml-auto" role="group" aria-label="Basic example">
+              <!-- <div class="btn-group btn-group-nav shadow btn-neutral ml-auto" role="group" aria-label="Basic example">
                 <div class="btn-group" role="group">
                   <button id="btn-group-settings" type="button" class="btn btn-neutral btn-icon" data-toggle="dropdown" data-offset="0,8" aria-haspopup="true" aria-expanded="false">
                     <span class="btn-inner--icon"><i class="fas fa-sliders-h"></i></span>
@@ -418,7 +435,7 @@ else {
                     <a class="dropdown-item" href="logout.php">Log Out</a>
                   </div>
                 </div>
-                <!-- <div class="btn-group" role="group">
+                <div class="btn-group" role="group">
                   <button id="btn-group-boards" type="button" class="btn btn-neutral btn-icon" data-toggle="dropdown" data-offset="0,8" aria-haspopup="true" aria-expanded="false">
                     <span class="btn-inner--icon"><i class="fas fa-chart-line"></i></span>
                     <span class="btn-inner--text d-none d-sm-inline-block">Board</span>
@@ -442,8 +459,8 @@ else {
                     <span class="dropdown-header">Flex</span>
                     <a class="dropdown-item" href="listing-users.html">Users</a>
                   </div>
-                </div> -->
-              </div>
+                </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -939,6 +956,35 @@ else {
                     </div>
                   </div>
                 </div>
+                <div class="row">
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <label class="form-control-label">Profile Picture</label>
+                      <?php if($result->profile==!NULL) {?>
+                        <input class="form-control" name="profile" type="hidden" value="<?php echo htmlentities($result->profile);?>">
+                        <?php } else {?>
+
+                      <input class="form-control" name="profile" type="file" value="<?php echo htmlentities($result->profile);?>">
+                      <?php } ?> 
+                    </div>
+                  </div>
+                
+                <?php if($result->profile==!NULL) {?>
+
+                <div class="col-lg-12" style="max-width: 17%;"> <div> <a href="content/<?php echo htmlentities($result->profile);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->profile);?>" class="img-fluid rounded shadow-lg"> </a>
+
+                 </div> </div> 
+
+                <?php } else {?>
+
+                <span>No Profile Image Uploaded</span> 
+
+                 
+
+                <?php } ?> 
+                          </div>
+
+      
               </div>
               <!-- Save changes buttons -->
               <div class="pt-5 mt-5 delimiter-top text-center">
@@ -959,6 +1005,18 @@ else {
                     <div>
                       <i class="fas fa-user-circle mr-2"></i>
                       <span>Profile</span>
+                    </div>
+                  </a>
+                  <a href="cover-image.php" class="list-group-item list-group-item-action d-flex justify-content-between">
+                    <div>
+                      <i class="fas fa-image mr-2"></i>
+                      <span>Cover Image</span>
+                    </div>
+                  </a>
+                  <a href="project-image.php" class="list-group-item list-group-item-action d-flex justify-content-between">
+                    <div>
+                      <i class="fas fa-building mr-2"></i>
+                      <span>Project Images</span>
                     </div>
                   </a>
                   <a href="account-settings.php" class="list-group-item list-group-item-action d-flex justify-content-between">

@@ -28,7 +28,10 @@ echo "<script type='text/javascript'> document.location ='dashboard.php'; </scri
 }
 }
 else{
-echo "<script>alert('Invalid Details');</script>";
+echo "<script>
+alert('Invalid Credentials');
+window.location.href='login.html';
+</script>";
 }
 }
 ?>

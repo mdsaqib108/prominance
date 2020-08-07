@@ -1,42 +1,42 @@
 <?php
 session_start();
-error_reporting(0);
+// error_reporting(0);
 include( dirname(__FILE__) . DIRECTORY_SEPARATOR . 'config.php');
 if(strlen($_SESSION['login'])==0)
   {
 header('location:login.html');
 }
-else { 
-if(isset($_POST['change']))
-  {
-$password=md5($_POST['password']);
-$newpassword=md5($_POST['newpassword']);
-$email=$_SESSION['login'];
-  $sql ="SELECT password FROM users WHERE email=:email and password=:password";
-$query= $dbh -> prepare($sql);
-$query-> bindParam(':email', $email, PDO::PARAM_STR);
-$query-> bindParam(':password', $password, PDO::PARAM_STR);
-$query-> execute();
-$results = $query -> fetchAll(PDO::FETCH_OBJ);
-if($query -> rowCount() > 0)
-{
-$con="update users set password=:newpassword where email=:email";
-$chngpwd1 = $dbh->prepare($con);
-$chngpwd1-> bindParam(':email', $email, PDO::PARAM_STR);
-$chngpwd1-> bindParam(':newpassword', $newpassword, PDO::PARAM_STR);
-$chngpwd1->execute();
-$msg="Your Password succesfully changed";
-}
 else {
-$error="Your current password is wrong";  
-}
-}
+  if(isset($_POST['cover_img']))
+    {    
+    $sid=$_SESSION['stdid'];  
 
-?>
+    $thinksoftResumeName2 = $_FILES['cover']['name'];
+      $thinksoftResumePath2 = $_FILES['cover']['tmp_name'];
+      $fileInfo2 = pathinfo($_FILES["cover"]["name"]);
+      $without_extension2 = substr($thinksoftResumeName2, 0, strrpos($thinksoftResumeName2, "."));
+      $fileName2 = $without_extension2 . '_'. uniqid(). '.' . $fileInfo2['extension'];
+
+    move_uploaded_file($thinksoftResumePath2,"content/$fileName2");
+
+
+
+
+    $sql="update users set cover=:fileName2 where id=:sid";
+
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':sid',$sid,PDO::PARAM_STR);
+    $query->bindParam(':fileName2',$fileName2,PDO::PARAM_STR);
+    $query->execute();
+
+    echo '<script>alert("Your cover has been updated")</script>';
+    }
+
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -49,22 +49,10 @@ $error="Your current password is wrong";
     <link rel="stylesheet" href="assets/libs/animate.css/animate.min.css">
     <link rel="stylesheet" href="assets/libs/swiper/dist/css/swiper.min.css">
     <link rel="stylesheet" href="assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="assets/libs/flatpickr/dist/flatpickr.min.css">
     <!-- Purpose CSS -->
     <link rel="stylesheet" href="assets/css/purpose.css" id="stylesheet">
   </head>
-
-  <script type="text/javascript">
-    function valid()
-    {
-    if(document.chngpwd.newpassword.value!= document.chngpwd.confirmpassword.value)
-    {
-    alert("New Password and Confirm Password Field do not match  !!");
-    document.chngpwd.confirmpassword.focus();
-    return false;
-    }
-    return true;
-    }
-    </script>
 
   <body>
     <header class="header" id="header-main">
@@ -368,7 +356,7 @@ $error="Your current password is wrong";
     </header>
   <div class="main-content">
     <!-- Header (account) -->
-    <section class="bg-gradient-primary d-flex align-items-end" data-offset-top="#header-main">
+    <section class=" bg-gradient-primary d-flex align-items-end" data-offset-top="#header-main">
       <!-- Header container -->
       <div class="container pt-4 pt-lg-0">
         <div class="row">
@@ -442,174 +430,125 @@ $error="Your current password is wrong";
         </div>
       </div>
     </section>
-
-
-
+    
     <section class="slice">
       <div class="container">
         <div class="row row-grid">
           <div class="col-lg-9 order-lg-2">
-            <div class="align-items-center">
-              <?php if($error){?>
-              <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Error</strong> <?php echo htmlentities($error); ?> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <?php } 
-              else if($msg){?>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Success</strong> <?php echo htmlentities($msg); ?> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <?php }?> 
+            <!-- Change avatar 
+            <div class="card bg-gradient-warning hover-shadow-lg">
+              <div class="card-body py-3">
+                <div class="row row-grid align-items-center">
+                  <div class="col-lg-8">
+                    <div class="media align-items-center">
+                      <a href="#" class="avatar avatar-lg rounded-circle mr-3">
+                        <img alt="Image placeholder" src="assets/img/theme/light/team-1-800x800.jpg">
+                      </a>
+                      <div class="media-body">
+                        <h5 class="text-white mb-0">Heather Wright</h5>
+                        <div>
+                          <form>
+                            <input type="file" name="file-1[]" id="file-1" class="custom-input-file custom-input-file-link" data-multiple-caption="{count} files selected" multiple />
+                            <label for="file-1">
+                              <span class="text-white">Change avatar</span>
+                            </label>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right d-none d-lg-block">
+                    <a href="#" class="btn btn-sm btn-white rounded-pill btn-icon shadow">
+                      <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
+                      <span class="btn-inner--text">Upgrade to Pro</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>-->
+            <!-- General information form -->
+                       
+            <form role="form" action="cover-image.php" method="POST" enctype="multipart/form-data">
+              <?php
+                $sid=$_SESSION['stdid'];
+                $sql= "SELECT * from users where id=:sid";
+                $query = $dbh -> prepare ($sql);
+                $query-> bindParam(':sid' , $sid , PDO::PARAM_STR);
+                $query->execute();
+                $results= $query->fetchAll(PDO::FETCH_OBJ);
+                $cnt=1;
+                if($query->rowCount() > 0)
+                {
+                  foreach($results as $result)
+                  {
 
-            </div>
-            <form role="form" method="post" onSubmit="return valid();" name="chngpwd">
-              <!-- Password -->
-              <div class="actions-toolbar py-2 mb-4">
-                <h5 class="mb-1">Change password</h5>
-                <p class="text-sm text-muted mb-0">You can help us, by filling your data, create you a much better experience using our website.</p>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="form-control-label">Current password</label>
-                    <input class="form-control" type="password" name="password">
+              ?>
+              
+
+
+              
+            
+              <!-- Address -->
+                <div class="actions-toolbar py-2 mb-4">
+                  
+                </div>
+                
+              <!-- Skills 
+              <div class="pt-5 mt-5 delimiter-top">
+                <div class="actions-toolbar py-2 mb-4">
+                  <h5 class="mb-1">Skills</h5>
+                  <p class="text-sm text-muted mb-0">Show off you skills using our tags input control.</p>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label class="sr-only">Skills</label>
+                      <input type="text" class="form-control" value="HTML, CSS3, Bootstrap, Photoshop, VueJS" data-toggle="tags" placeholder="Type here..." />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="form-control-label">New password</label>
-                    <input class="form-control" type="password" name="newpassword">
-                  </div>
+              </div>-->
+              <!-- Description -->
+              <div class="">
+                <div class="actions-toolbar py-2 mb-4">
+                  <h5 class="mb-1">Cover Image</h5>
+                  <p class="text-sm text-muted mb-0">Upload your Cover picture</p>
                 </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label class="form-control-label">Confirm password</label>
-                    <input class="form-control" type="password" name="confirmpassword">
+                <div class="row">
+                  <div class="col-md-10">
+                    <div class="form-group">
+                      <label class="form-control-label">Cover Picture</label>
+                      <?php if($result->cover==!NULL) {?>
+                        <input class="form-control" name="cover" type="hidden" value="<?php echo htmlentities($result->cover);?>">
+                        <?php } else {?>
+
+                      <input class="form-control" name="cover" type="file" value="<?php echo htmlentities($result->cover);?>">
+                      <?php } ?> 
+                    </div>
                   </div>
-                </div>
+                
+                <?php if($result->cover==!NULL) {?>
+
+                <div class="col-lg-12" style="max-width: 17%;"> <div>  <a href="content/<?php echo htmlentities($result->cover);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->cover);?>" class="img-fluid rounded shadow-lg"> </a>
+
+                 </div> </div> 
+
+                <?php } else {?>
+
+                <span>No Cover Image Uploaded</span> 
+
+                 
+
+                <?php } ?> 
+                          </div>
               </div>
-              <div class="mt-4">
-                <button type="submit" name="change" class="btn btn-sm bg-gradient-primary text-white">Update password</button>
-                <a href="#" class="btn btn-sm btn-secondary">I forgot my password</a>
+              <!-- Save changes buttons -->
+              <div class="pt-5 mt-5 delimiter-top text-center">
+                <button type="submit" name="cover_img" class="btn btn-sm bg-gradient-primary text-white">Save changes</button>
+                <!-- <button type="button" class="btn btn-link text-muted">Cancel</button> -->
               </div>
+              <?php }} ?>
             </form>
-            <!-- Username -->
-            <div class="mt-5 pt-5 delimiter-top">
-              <div class="actions-toolbar py-2 mb-4">
-                <h5 class="mb-1">Change username</h5>
-                <p class="text-sm text-muted mb-0">You can help us, by filling your data, create you a much better experience using our website.</p>
-              </div>
-              <!-- Button trigger modal -->
-              <button type="button" class="btn btn-sm bg-gradient-primary text-white" data-toggle="modal" data-target="#modal-change-username">Change username</button>
-              <!-- Modal -->
-              <div class="modal fade" id="modal-change-username" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                  <form>
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <div class="modal-title d-flex align-items-center" id="modal-title-change-username">
-                          <div>
-                            <div class="icon icon-sm icon-shape icon-info rounded-circle shadow mr-3">
-                              <i class="fas fa-user"></i>
-                            </div>
-                          </div>
-                          <div>
-                            <h6 class="mb-0">Change username</h6>
-                          </div>
-                        </div>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <div class="row">
-                          <div class="col-sm-6">
-                            <div class="form-group">
-                              <label class="form-control-label">Old username</label>
-                              <?php
-                                $sid=$_SESSION['stdid'];
-                                $sql= "SELECT * from users where id=:sid";
-                                $query = $dbh -> prepare ($sql);
-                                $query-> bindParam(':sid' , $sid , PDO::PARAM_STR);
-                                $query->execute();
-                                $results= $query->fetchAll(PDO::FETCH_OBJ);
-                                $cnt=1;
-                                if($query->rowCount() > 0)
-                                {
-                                  foreach($results as $result)
-                                  {
-
-                              ?>
-                              <input type="text" name="username" class="form-control" placeholder="Username" value="<?php echo htmlentities($result->username);?>" aria-label="Username" aria-describedby="basic-addon1" required readonly>
-                              <?php }} ?>
-                            </div>
-                          </div>
-                          <div class="col-sm-6">
-                            <div class="form-group">
-                              <label class="form-control-label">New username</label>
-                              <input class="form-control" type="text" placeholder="New Username">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="px-5 pt-4 mt-4 delimiter-top text-center">
-                          <p class="text-muted text-sm">You will receive an email where you will be asked to confirm this action in order to be completed.</p>
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Change my username</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-            <!-- Delete -->
-            <div class="mt-5 pt-5 delimiter-top">
-              <div class="actions-toolbar py-2 mb-4">
-                <h5 class="mb-1">Delete account</h5>
-                <p class="text-sm text-muted mb-0">Deleting your account is ireversible and can affect past activites.</p>
-              </div>
-              <!-- Button trigger modal -->
-              <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal-delete-account">Delete account</button>
-              <!-- Modal -->
-              <div class="modal modal-danger fade" id="modal-delete-account" tabindex="-1" role="dialog" aria-labelledby="modal-delete-account" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                  <form class="form-danger">
-                    <div class="modal-content">
-                      <div class="modal-body">
-                        <div class="text-center">
-                          <i class="fas fa-exclamation-circle fa-3x opacity-8"></i>
-                          <h5 class="text-white mt-4">Should we stop now?</h5>
-                          <p class="text-sm text-sm">All your data will be erased. You will no longer be billed, and your username will be available to anyone.</p>
-                        </div>
-                        <div class="form-group">
-                          <label class="form-control-label text-white">You email or username</label>
-                          <input class="form-control" type="text">
-                        </div>
-                        <div class="form-group">
-                          <label class="form-control-label text-white">To verify, type <span class="font-italic">delete my account</span> below</label>
-                          <input class="form-control" type="text">
-                        </div>
-                        <div class="form-group">
-                          <label class="form-control-label text-white">Your password</label>
-                          <input class="form-control" type="password">
-                        </div>
-                        <div class="mt-4">
-                          <button type="button" class="btn btn-block btn-sm btn-white text-danger">Delete my account</button>
-                          <button type="button" class="btn btn-block btn-sm btn-link text-light mt-4" data-dismiss="modal">Not this time</button>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
           </div>
           <div class="col-lg-3 order-lg-1">
             <div data-toggle="sticky" data-sticky-offset="30" data-negative-margin=".card-profile-cover">
@@ -749,6 +688,8 @@ $error="Your current password is wrong";
     <script src="assets/libs/typed.js/lib/typed.min.js"></script>
     <script src="assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script>
     <script src="assets/libs/jquery-countdown/dist/jquery.countdown.min.js"></script>
+    <script src="assets/libs/autosize/dist/autosize.min.js"></script>
+    <script src="assets/libs/flatpickr/dist/flatpickr.min.js"></script>
     <!-- Purpose JS -->
     <script src="assets/js/purpose.js"></script>
     <!-- Demo JS - remove it when starting your project -->
@@ -756,5 +697,4 @@ $error="Your current password is wrong";
   </body>
 
 </html>
-
 <?php } ?>
