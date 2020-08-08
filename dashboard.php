@@ -92,12 +92,12 @@ else {
     echo '<script>alert("Your profile has been updated")</script>';
     }
 
-  //   if(isset($POST['del']))
+  //   if(isset($_GET['del']))
   //   {
-  //   $sid=$_SESSION['stdid'];
-  //   $sql = "DELETE profile FROM users  WHERE id=:sid";
+  //   $id=$_GET['del'];
+  //   $sql = "UPDATE users SET profile = NULL WHERE id=:id";
   //   $query = $dbh->prepare($sql);
-  //   $query -> bindParam(':sid',$sid, PDO::PARAM_STR);
+  //   $query -> bindParam(':id',$id, PDO::PARAM_STR);
   //   $query -> execute();
   //   $results=$query->fetchAll(PDO::FETCH_OBJ);
   //   $cnt=1;
