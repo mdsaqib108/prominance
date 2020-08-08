@@ -11,22 +11,46 @@ else {
     {    
     $sid=$_SESSION['stdid'];  
 
-    $thinksoftResumeName2 = $_FILES['cover']['name'];
-      $thinksoftResumePath2 = $_FILES['cover']['tmp_name'];
+
+    $sql= "SELECT * from users where id=:sid";
+                $query = $dbh -> prepare ($sql);
+                $query-> bindParam(':sid' , $sid , PDO::PARAM_STR);
+                $query->execute();
+                $results= $query->fetchAll(PDO::FETCH_OBJ);
+                $cnt=1;
+                if($query->rowCount() > 0)
+                {
+                  foreach($results as $result)
+                  {
+
+
+                    if($result->cover==!NULL) {
+                      
+                      $fileName2= $result->cover;
+
+                         } else {
+
+    $fileName = $_FILES['cover']['name'];
+      $filePath = $_FILES['cover']['tmp_name'];
       $fileInfo2 = pathinfo($_FILES["cover"]["name"]);
-      $without_extension2 = substr($thinksoftResumeName2, 0, strrpos($thinksoftResumeName2, "."));
-      $fileName2 = $without_extension2 . '_'. uniqid(). '.' . $fileInfo2['extension'];
+      // $without_extension2 = substr($fileName, 0, strrpos($fileName, "."));
+      // $fileName2 = $without_extension2 . '_'. uniqid(). '.' . $fileInfo2['extension'];
 
-    move_uploaded_file($thinksoftResumePath2,"content/$fileName2");
+    move_uploaded_file($filePath,"content/$fileName");
+
+    }
+             
+                      }
+                    }
 
 
 
 
-    $sql="update users set cover=:fileName2 where id=:sid";
+    $sql="update users set cover=:fileName where id=:sid";
 
     $query = $dbh->prepare($sql);
     $query->bindParam(':sid',$sid,PDO::PARAM_STR);
-    $query->bindParam(':fileName2',$fileName2,PDO::PARAM_STR);
+    $query->bindParam(':fileName',$fileName,PDO::PARAM_STR);
     $query->execute();
 
     echo '<script>alert("Your cover has been updated")</script>';
@@ -36,7 +60,7 @@ else {
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -354,41 +378,41 @@ else {
         </div>
       </nav>
     </header>
-  <div class="main-content">
-    <!-- Header (account) -->
-    <section class=" bg-gradient-primary d-flex align-items-end" data-offset-top="#header-main">
-      <!-- Header container -->
-      <div class="container pt-4 pt-lg-0">
-        <div class="row">
-          <div class=" col-lg-12">
-            <!-- Salute + Small stats -->
-            <div class="row align-items-center mb-4">
-              <div class="col-md-5 mb-4 mb-md-0">
-                <span class="h2 mb-0 text-white d-block">Hello, 
-                  <?php
+    <div class="main-content">
+      <!-- Header (account) -->
+      <section class=" bg-gradient-primary d-flex align-items-end" data-offset-top="#header-main">
+        <!-- Header container -->
+        <div class="container pt-4 pt-lg-0">
+          <div class="row">
+            <div class=" col-lg-12">
+              <!-- Salute + Small stats -->
+              <div class="row align-items-center mb-4">
+                <div class="col-md-5 mb-4 mb-md-0">
+                  <span class="h2 mb-0 text-white d-block">Hello,
+                    <?php
                   if (isset($_SESSION['login']))
                   {
                       echo $_SESSION['first_name'];
                   }
                   ?>
-                </span>
-                <span class="text-white">Have a nice day!</span>
+                  </span>
+                  <span class="text-white">Have a nice day!</span>
+                </div>
               </div>
-            </div>
-            <!-- Account navigation -->
-            <div class="d-flex">
-              <a class="btn btn-icon btn-group-nav shadow btn-neutral">
-                <span class="btn-inner--icon"><i class="fas fa-user"></i></span>
-                <span class="btn-inner--text d-none d-md-inline-block">
-                  <?php
+              <!-- Account navigation -->
+              <div class="d-flex">
+                <a class="btn btn-icon btn-group-nav shadow btn-neutral">
+                  <span class="btn-inner--icon"><i class="fas fa-user"></i></span>
+                  <span class="btn-inner--text d-none d-md-inline-block">
+                    <?php
                   if (isset($_SESSION['login']))
                   {
                       echo $_SESSION['username'];
                   }
                   ?>
-                </span>
-              </a>
-              <!-- <div class="btn-group btn-group-nav shadow btn-neutral ml-auto" role="group" aria-label="Basic example">
+                  </span>
+                </a>
+                <!-- <div class="btn-group btn-group-nav shadow btn-neutral ml-auto" role="group" aria-label="Basic example">
                 <div class="btn-group" role="group">
                   <button id="btn-group-settings" type="button" class="btn btn-neutral btn-icon" data-toggle="dropdown" data-offset="0,8" aria-haspopup="true" aria-expanded="false">
                     <span class="btn-inner--icon"><i class="fas fa-sliders-h"></i></span>
@@ -425,17 +449,17 @@ else {
                   </div>
                 </div>
               </div> -->
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    
-    <section class="slice">
-      <div class="container">
-        <div class="row row-grid">
-          <div class="col-lg-9 order-lg-2">
-            <!-- Change avatar 
+      </section>
+
+      <section class="slice">
+        <div class="container">
+          <div class="row row-grid">
+            <div class="col-lg-9 order-lg-2">
+              <!-- Change avatar 
             <div class="card bg-gradient-warning hover-shadow-lg">
               <div class="card-body py-3">
                 <div class="row row-grid align-items-center">
@@ -466,10 +490,10 @@ else {
                 </div>
               </div>
             </div>-->
-            <!-- General information form -->
-                       
-            <form role="form" action="cover-image.php" method="POST" enctype="multipart/form-data">
-              <?php
+              <!-- General information form -->
+
+              <form role="form" action="cover-image.php" method="POST" enctype="multipart/form-data">
+                <?php
                 $sid=$_SESSION['stdid'];
                 $sql= "SELECT * from users where id=:sid";
                 $query = $dbh -> prepare ($sql);
@@ -483,17 +507,17 @@ else {
                   {
 
               ?>
-              
 
 
-              
-            
-              <!-- Address -->
+
+
+
+                <!-- Address -->
                 <div class="actions-toolbar py-2 mb-4">
-                  
+
                 </div>
-                
-              <!-- Skills 
+
+                <!-- Skills 
               <div class="pt-5 mt-5 delimiter-top">
                 <div class="actions-toolbar py-2 mb-4">
                   <h5 class="mb-1">Skills</h5>
@@ -508,94 +532,96 @@ else {
                   </div>
                 </div>
               </div>-->
-              <!-- Description -->
-              <div class="">
-                <div class="actions-toolbar py-2 mb-4">
-                  <h5 class="mb-1">Cover Image</h5>
-                  <p class="text-sm text-muted mb-0">Upload your Cover picture</p>
-                </div>
-                <div class="row">
-                  <div class="col-md-10">
-                    <div class="form-group">
-                      <label class="form-control-label">Cover Picture</label>
-                      <?php if($result->cover==!NULL) {?>
-                        <input class="form-control" name="cover" type="hidden" value="<?php echo htmlentities($result->cover);?>">
+                <!-- Description -->
+                <div class="">
+                  <div class="actions-toolbar py-2 mb-4">
+                    <h5 class="mb-1">Cover Image</h5>
+                    <p class="text-sm text-muted mb-0">Upload your Cover picture</p>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-10">
+                      <div class="form-group">
+                        <label class="form-control-label">Cover Picture</label>
+                        <?php if($result->cover==!NULL) {?>
+                        <input class="form-control" name="" type="hidden">
                         <?php } else {?>
 
-                      <input class="form-control" name="cover" type="file" value="<?php echo htmlentities($result->cover);?>">
-                      <?php } ?> 
+                        <input class="form-control" name="cover" type="file">
+                        <?php } ?>
+                      </div>
                     </div>
+
+                    <?php if($result->cover==!NULL) {?>
+
+                    <div class="col-lg-12" style="max-width: 17%;">
+                      <div> <a href="content/<?php echo htmlentities($result->cover);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->cover);?>" class="img-fluid rounded shadow-lg"> </a>
+
+                      </div>
+                    </div>
+
+                    <?php } else {?>
+
+                    <span>No Cover Image Uploaded</span>
+
+
+
+                    <?php } ?>
                   </div>
-                
-                <?php if($result->cover==!NULL) {?>
-
-                <div class="col-lg-12" style="max-width: 17%;"> <div>  <a href="content/<?php echo htmlentities($result->cover);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->cover);?>" class="img-fluid rounded shadow-lg"> </a>
-
-                 </div> </div> 
-
-                <?php } else {?>
-
-                <span>No Cover Image Uploaded</span> 
-
-                 
-
-                <?php } ?> 
-                          </div>
-              </div>
-              <!-- Save changes buttons -->
-              <div class="pt-5 mt-5 delimiter-top text-center">
-                <button type="submit" name="cover_img" class="btn btn-sm bg-gradient-primary text-white">Save changes</button>
-                <!-- <button type="button" class="btn btn-link text-muted">Cancel</button> -->
-              </div>
-              <?php }} ?>
-            </form>
-          </div>
-          <div class="col-lg-3 order-lg-1">
-            <div data-toggle="sticky" data-sticky-offset="30" data-negative-margin=".card-profile-cover">
-              <div class="card">
-                <div class="card-header py-3">
-                  <span class="h6">Settings</span>
                 </div>
-                <div class="list-group list-group-sm list-group-flush">
-                  <a href="dashboard.php" class="list-group-item list-group-item-action d-flex justify-content-between">
-                    <div>
-                      <i class="fas fa-user-circle mr-2"></i>
-                      <span>Profile</span>
-                    </div>
-                  </a>
-                  <a href="cover-image.php" class="list-group-item list-group-item-action d-flex justify-content-between">
-                    <div>
-                      <i class="fas fa-image mr-2"></i>
-                      <span>Cover Image</span>
-                    </div>
-                  </a>
-                  <a href="project-image.php" class="list-group-item list-group-item-action d-flex justify-content-between">
-                    <div>
-                      <i class="fas fa-building mr-2"></i>
-                      <span>Project Images</span>
-                    </div>
-                  </a>
-                  <a href="account-settings.php" class="list-group-item list-group-item-action d-flex justify-content-between">
-                    <div>
-                      <i class="fas fa-cog mr-2"></i>
-                      <span>Settings</span>
-                    </div>
-                  </a>
-                  <a href="logout.php" class="list-group-item list-group-item-action d-flex justify-content-between">
-                    <div>
-                      <i class="fas fa-credit-card mr-2"></i>
-                      <span>Log Out</span>
-                    </div>
-                  </a>
+                <!-- Save changes buttons -->
+                <div class="pt-5 mt-5 delimiter-top text-center">
+                  <button type="submit" name="cover_img" class="btn btn-sm bg-gradient-primary text-white">Save changes</button>
+                  <!-- <button type="button" class="btn btn-link text-muted">Cancel</button> -->
+                </div>
+                <?php }} ?>
+              </form>
+            </div>
+            <div class="col-lg-3 order-lg-1">
+              <div data-toggle="sticky" data-sticky-offset="30" data-negative-margin=".card-profile-cover">
+                <div class="card">
+                  <div class="card-header py-3">
+                    <span class="h6">Settings</span>
+                  </div>
+                  <div class="list-group list-group-sm list-group-flush">
+                    <a href="dashboard.php" class="list-group-item list-group-item-action d-flex justify-content-between">
+                      <div>
+                        <i class="fas fa-user-circle mr-2"></i>
+                        <span>Profile</span>
+                      </div>
+                    </a>
+                    <a href="cover-image.php" class="list-group-item list-group-item-action d-flex justify-content-between">
+                      <div>
+                        <i class="fas fa-image mr-2"></i>
+                        <span>Cover Image</span>
+                      </div>
+                    </a>
+                    <a href="project-image.php" class="list-group-item list-group-item-action d-flex justify-content-between">
+                      <div>
+                        <i class="fas fa-building mr-2"></i>
+                        <span>Project Images</span>
+                      </div>
+                    </a>
+                    <a href="account-settings.php" class="list-group-item list-group-item-action d-flex justify-content-between">
+                      <div>
+                        <i class="fas fa-cog mr-2"></i>
+                        <span>Settings</span>
+                      </div>
+                    </a>
+                    <a href="logout.php" class="list-group-item list-group-item-action d-flex justify-content-between">
+                      <div>
+                        <i class="fas fa-credit-card mr-2"></i>
+                        <span>Log Out</span>
+                      </div>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </div>
-  <footer id="footer-main">
+      </section>
+    </div>
+    <footer id="footer-main">
       <div class="footer footer-dark" style="background: linear-gradient(90deg, #3dc1ed 0%, #7ac49d 100%);">
         <div class="container">
           <div class="row pt-md">

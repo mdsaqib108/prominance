@@ -9,55 +9,124 @@ header('location:login.html');
 else {
   if(isset($_POST['cover_img']))
     {    
-    $sid=$_SESSION['stdid'];  
+    $sid=$_SESSION['stdid']; 
+    $project_desc_1=$_POST['project_desc_1'];
+    $project_desc_2=$_POST['project_desc_2'];
+    $project_desc_3=$_POST['project_desc_3'];
+    $project_desc_4=$_POST['project_desc_4'];
+    $project_desc_5=$_POST['project_desc_5'];
+    $project_desc_6=$_POST['project_desc_6'];
 
-    $thinksoftResumeName = $_FILES['project_1']['name'];
-      $thinksoftResumePath = $_FILES['project_1']['tmp_name'];
+    $sql= "SELECT * from users where id=:sid";
+                $query = $dbh -> prepare ($sql);
+                $query-> bindParam(':sid' , $sid , PDO::PARAM_STR);
+                $query->execute();
+                $results= $query->fetchAll(PDO::FETCH_OBJ);
+                $cnt=1;
+                if($query->rowCount() > 0)
+                {
+                  foreach($results as $result)
+                  {
+
+
+                    if($result->project_1==!NULL) {
+                      
+                      $fileName= $result->project_1;
+
+                         } else {
+
+    $fileName = $_FILES['project_1']['name'];
+      $filePath = $_FILES['project_1']['tmp_name'];
       $fileInfo = pathinfo($_FILES["project_1"]["name"]);
-      $without_extension = substr($thinksoftResumeName, 0, strrpos($thinksoftResumeName, "."));
-      $fileName = $without_extension . '_'. uniqid(). '.' . $fileInfo['extension'];
+      // $without_extension = substr($fileName, 0, strrpos($fileName, "."));
+      // $fileName = $without_extension . '_'. uniqid(). '.' . $fileInfo['extension'];
 
-      $thinksoftResumeName2 = $_FILES['project_2']['name'];
-      $thinksoftResumePath2 = $_FILES['project_2']['tmp_name'];
+      move_uploaded_file($filePath,"content/$fileName");
+    }
+
+    if($result->project_2==!NULL) {
+                      
+                      $fileName2= $result->project_2;
+
+                         } else {
+
+      $fileName2 = $_FILES['project_2']['name'];
+      $filePath2 = $_FILES['project_2']['tmp_name'];
       $fileInfo2 = pathinfo($_FILES["project_2"]["name"]);
-      $without_extension2 = substr($thinksoftResumeName2, 0, strrpos($thinksoftResumeName2, "."));
-      $fileName2 = $without_extension2 . '_'. uniqid(). '.' . $fileInfo2['extension'];
+      // $without_extension2 = substr($fileName2, 0, strrpos($fileName2, "."));
+      // $fileName2 = $without_extension2 . '_'. uniqid(). '.' . $fileInfo2['extension'];
 
-      $thinksoftResumeName3 = $_FILES['project_3']['name'];
-      $thinksoftResumePath3 = $_FILES['project_3']['tmp_name'];
+      move_uploaded_file($filePath2,"content/$fileName2");
+    }
+
+    if($result->project_3==!NULL) {
+                      
+                      $fileName3= $result->project_3;
+
+                         } else {
+
+      $fileName3 = $_FILES['project_3']['name'];
+      $filePath3 = $_FILES['project_3']['tmp_name'];
       $fileInfo3 = pathinfo($_FILES["project_3"]["name"]);
-      $without_extension3 = substr($thinksoftResumeName3, 0, strrpos($thinksoftResumeName3, "."));
-      $fileName3 = $without_extension3 . '_'. uniqid(). '.' . $fileInfo3['extension'];
+      // $without_extension3 = substr($fileName3, 0, strrpos($fileName3, "."));
+      // $fileName3 = $without_extension3 . '_'. uniqid(). '.' . $fileInfo3['extension'];
 
-      $thinksoftResumeName4 = $_FILES['project_4']['name'];
-      $thinksoftResumePath4 = $_FILES['project_4']['tmp_name'];
+      move_uploaded_file($filePath3,"content/$fileName3");
+        }
+
+      if($result->project_4==!NULL) {
+                      
+                      $fileName4= $result->project_4;
+
+                         } else {
+
+      $fileName4 = $_FILES['project_4']['name'];
+      $filePath4 = $_FILES['project_4']['tmp_name'];
       $fileInfo4 = pathinfo($_FILES["project_4"]["name"]);
-      $without_extension4 = substr($thinksoftResumeName4, 0, strrpos($thinksoftResumeName4, "."));
-      $fileName4 = $without_extension4 . '_'. uniqid(). '.' . $fileInfo4['extension'];
+      // $without_extension4 = substr($fileName4, 0, strrpos($fileName4, "."));
+      // $fileName4 = $without_extension4 . '_'. uniqid(). '.' . $fileInfo4['extension'];
 
-      $thinksoftResumeName5 = $_FILES['project_5']['name'];
-      $thinksoftResumePath5 = $_FILES['project_5']['tmp_name'];
+      move_uploaded_file($filePath4,"content/$fileName4");
+    }
+
+    if($result->project_5==!NULL) {
+                      
+                      $fileName5= $result->project_5;
+
+                         } else {
+
+      $fileName5 = $_FILES['project_5']['name'];
+      $filePath5 = $_FILES['project_5']['tmp_name'];
       $fileInfo5 = pathinfo($_FILES["project_5"]["name"]);
-      $without_extension5 = substr($thinksoftResumeName5, 0, strrpos($thinksoftResumeName5, "."));
-      $fileName5 = $without_extension5 . '_'. uniqid(). '.' . $fileInfo5['extension'];
+      // $without_extension5 = substr($fileName5, 0, strrpos($fileName5, "."));
+      // $fileName5 = $without_extension5 . '_'. uniqid(). '.' . $fileInfo5['extension'];
 
-      $thinksoftResumeName6 = $_FILES['project_6']['name'];
-      $thinksoftResumePath6 = $_FILES['project_6']['tmp_name'];
+      move_uploaded_file($filePath5,"content/$fileName5");
+    }
+
+    if($result->project_6==!NULL) {
+                      
+                      $fileName6= $result->project_6;
+
+                         } else {
+
+      $fileName6 = $_FILES['project_6']['name'];
+      $filePath6 = $_FILES['project_6']['tmp_name'];
       $fileInfo6 = pathinfo($_FILES["project_6"]["name"]);
-      $without_extension6 = substr($thinksoftResumeName6, 0, strrpos($thinksoftResumeName6, "."));
-      $fileName6 = $without_extension6 . '_'. uniqid(). '.' . $fileInfo6['extension'];
+      // $without_extension6 = substr($fileName6, 0, strrpos($fileName6, "."));
+      // $fileName6 = $without_extension6 . '_'. uniqid(). '.' . $fileInfo6['extension'];
 
-    move_uploaded_file($thinksoftResumePath,"content/$fileName");
-    move_uploaded_file($thinksoftResumePath2,"content/$fileName2");
-    move_uploaded_file($thinksoftResumePath3,"content/$fileName3");
-    move_uploaded_file($thinksoftResumePath4,"content/$fileName4");
-    move_uploaded_file($thinksoftResumePath5,"content/$fileName5");
-    move_uploaded_file($thinksoftResumePath6,"content/$fileName6");
-
-
+      move_uploaded_file($filePath6,"content/$fileName6");
+    }
+}
+}
+    
+    
 
 
-    $sql="update users set project_1=:fileName, project_2=:fileName2 , project_3=:fileName3, project_4=:fileName4, project_5=:fileName5, project_6=:fileName6 where id=:sid";
+
+
+    $sql="update users set project_1=:fileName, project_2=:fileName2 , project_3=:fileName3, project_4=:fileName4, project_5=:fileName5, project_6=:fileName6, project_desc_1=:project_desc_1, project_desc_2=:project_desc_2, project_desc_3=:project_desc_3, project_desc_4=:project_desc_4, project_desc_5=:project_desc_5, project_desc_6=:project_desc_6 where id=:sid";
 
     $query = $dbh->prepare($sql);
     $query->bindParam(':sid',$sid,PDO::PARAM_STR);
@@ -67,6 +136,12 @@ else {
     $query->bindParam(':fileName4',$fileName4,PDO::PARAM_STR);
     $query->bindParam(':fileName5',$fileName5,PDO::PARAM_STR);
     $query->bindParam(':fileName6',$fileName6,PDO::PARAM_STR);
+    $query->bindParam(':project_desc_1',$project_desc_1,PDO::PARAM_STR);
+    $query->bindParam(':project_desc_2',$project_desc_2,PDO::PARAM_STR);
+    $query->bindParam(':project_desc_3',$project_desc_3,PDO::PARAM_STR);
+    $query->bindParam(':project_desc_4',$project_desc_4,PDO::PARAM_STR);
+    $query->bindParam(':project_desc_5',$project_desc_5,PDO::PARAM_STR);
+    $query->bindParam(':project_desc_6',$project_desc_6,PDO::PARAM_STR);
     $query->execute();
 
     echo '<script>alert("Your cover has been updated")</script>';
@@ -555,7 +630,7 @@ else {
                     <p class="text-sm text-muted mb-0">Upload your Project Image</p>
                   </div>
                   <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-6">
                       <div class="form-group">
                         <label class="form-control-label">Project Image 1</label>
                         <?php if($result->project_1==!NULL) {?>
@@ -567,10 +642,17 @@ else {
                       </div>
                     </div>
 
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label">Project Description 1</label>
+                        <input class="form-control" name="project_desc_1" type="text" placeholder="Project Description" value="<?php echo htmlentities($result->project_desc_1);?>" >
+                      </div>
+                    </div>
+
                     <?php if($result->project_1==!NULL) {?>
 
-                    <div class="col-lg-12" style="max-width: 17%;">
-                      <div>  <a href="content/<?php echo htmlentities($result->project_1);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_1);?>" class="img-fluid rounded shadow-lg"> </a>
+                    <div class="col-lg-12" style="max-width: 17%; position: absolute;">
+                      <div> <a href="content/<?php echo htmlentities($result->project_1);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_1);?>" class="img-fluid rounded shadow-lg"> </a>
 
                       </div>
                     </div>
@@ -585,7 +667,7 @@ else {
                   </div>
 
                   <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-6">
                       <div class="form-group">
                         <label class="form-control-label">Project Image 2</label>
                         <?php if($result->project_2==!NULL) {?>
@@ -597,10 +679,17 @@ else {
                       </div>
                     </div>
 
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label">Project Description 2</label>
+                        <input class="form-control" name="project_desc_2" type="text" placeholder="Project Description" value="<?php echo htmlentities($result->project_desc_2);?>" >
+                      </div>
+                    </div>
+
                     <?php if($result->project_2==!NULL) {?>
 
-                    <div class="col-lg-12" style="max-width: 17%;">
-                      <div>  <a href="content/<?php echo htmlentities($result->project_2);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_2);?>" class="img-fluid rounded shadow-lg"> </a>
+                    <div class="col-lg-12" style="max-width: 17%; position: absolute;">
+                      <div> <a href="content/<?php echo htmlentities($result->project_2);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_2);?>" class="img-fluid rounded shadow-lg"> </a>
 
                       </div>
                     </div>
@@ -616,7 +705,7 @@ else {
 
 
                   <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-6">
                       <div class="form-group">
                         <label class="form-control-label">Project Image 3</label>
                         <?php if($result->project_3==!NULL) {?>
@@ -628,10 +717,17 @@ else {
                       </div>
                     </div>
 
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label">Project Description 3</label>
+                        <input class="form-control" name="project_desc_3" type="text" placeholder="Project Description" value="<?php echo htmlentities($result->project_desc_3);?>" >
+                      </div>
+                    </div>
+
                     <?php if($result->project_3==!NULL) {?>
 
-                    <div class="col-lg-12" style="max-width: 17%;">
-                      <div>  <a href="content/<?php echo htmlentities($result->project_3);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_3);?>" class="img-fluid rounded shadow-lg"> </a>
+                    <div class="col-lg-12" style="max-width: 17%; position: absolute;">
+                      <div> <a href="content/<?php echo htmlentities($result->project_3);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_3);?>" class="img-fluid rounded shadow-lg"> </a>
 
                       </div>
                     </div>
@@ -647,7 +743,7 @@ else {
 
 
                   <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-6">
                       <div class="form-group">
                         <label class="form-control-label">Project Image 4</label>
                         <?php if($result->project_4==!NULL) {?>
@@ -659,10 +755,17 @@ else {
                       </div>
                     </div>
 
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label">Project Description 4</label>
+                        <input class="form-control" name="project_desc_4" type="text" placeholder="Project Description" value="<?php echo htmlentities($result->project_desc_4);?>" >
+                      </div>
+                    </div>
+
                     <?php if($result->project_4==!NULL) {?>
 
-                    <div class="col-lg-12" style="max-width: 17%;">
-                      <div>  <a href="content/<?php echo htmlentities($result->project_4);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_4);?>" class="img-fluid rounded shadow-lg"> </a>
+                    <div class="col-lg-12" style="max-width: 17%; position: absolute;">
+                      <div> <a href="content/<?php echo htmlentities($result->project_4);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_4);?>" class="img-fluid rounded shadow-lg"> </a>
 
                       </div>
                     </div>
@@ -677,7 +780,7 @@ else {
                   </div>
 
                   <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-6">
                       <div class="form-group">
                         <label class="form-control-label">Project Image 5</label>
                         <?php if($result->project_5==!NULL) {?>
@@ -689,10 +792,17 @@ else {
                       </div>
                     </div>
 
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label">Project Description 5</label>
+                        <input class="form-control" name="project_desc_5" type="text" placeholder="Project Description" value="<?php echo htmlentities($result->project_desc_5);?>" >
+                      </div>
+                    </div>
+
                     <?php if($result->project_5==!NULL) {?>
 
-                    <div class="col-lg-12" style="max-width: 17%;">
-                      <div>  <a href="content/<?php echo htmlentities($result->project_5);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_5);?>" class="img-fluid rounded shadow-lg"> </a>
+                    <div class="col-lg-12" style="max-width: 17%; position: absolute;">
+                      <div> <a href="content/<?php echo htmlentities($result->project_5);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_5);?>" class="img-fluid rounded shadow-lg"> </a>
 
                       </div>
                     </div>
@@ -707,7 +817,7 @@ else {
                   </div>
 
                   <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-6">
                       <div class="form-group">
                         <label class="form-control-label">Project Image 6</label>
                         <?php if($result->project_6==!NULL) {?>
@@ -719,10 +829,17 @@ else {
                       </div>
                     </div>
 
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label">Project Description 6</label>
+                        <input class="form-control" name="project_desc_6" type="text" placeholder="Project Description" value="<?php echo htmlentities($result->project_desc_6);?>" >
+                      </div>
+                    </div>
+
                     <?php if($result->project_6==!NULL) {?>
 
-                    <div class="col-lg-12" style="max-width: 17%;">
-                      <div>  <a href="content/<?php echo htmlentities($result->project_6);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_6);?>" class="img-fluid rounded shadow-lg"> </a>
+                    <div class="col-lg-12" style="max-width: 17%; position: absolute;">
+                      <div> <a href="content/<?php echo htmlentities($result->project_6);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_6);?>" class="img-fluid rounded shadow-lg"> </a>
 
                       </div>
                     </div>
