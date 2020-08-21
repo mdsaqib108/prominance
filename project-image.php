@@ -144,7 +144,7 @@ else {
     $query->bindParam(':project_desc_6',$project_desc_6,PDO::PARAM_STR);
     $query->execute();
 
-    echo '<script>alert("Your cover has been updated")</script>';
+    echo '<script>alert("We will verify your profile and respond you within 12 hours")</script>';
     }
 
   ?>
@@ -167,6 +167,13 @@ else {
     <link rel="stylesheet" href="assets/libs/flatpickr/dist/flatpickr.min.css">
     <!-- Purpose CSS -->
     <link rel="stylesheet" href="assets/css/purpose.css" id="stylesheet">
+
+    <style type="text/css">
+      .dragBox {
+        width: auto !important;
+      }
+
+    </style>
   </head>
 
   <body>
@@ -439,9 +446,6 @@ else {
                   </ul>
                 </div>
               </li>
-              <!--  <li class="nav-item d-lg-none d-xl-block">
-              <a class="nav-link" href="docs/changelog.html">Consult Online </a>
-            </li> -->
               <li class="nav-item d-lg-none d-xl-block">
                 <a class="nav-link" href="#testimonials">Testimonials</a>
               </li>
@@ -503,43 +507,6 @@ else {
                   ?>
                   </span>
                 </a>
-                <!-- <div class="btn-group btn-group-nav shadow btn-neutral ml-auto" role="group" aria-label="Basic example">
-                <div class="btn-group" role="group">
-                  <button id="btn-group-settings" type="button" class="btn btn-neutral btn-icon" data-toggle="dropdown" data-offset="0,8" aria-haspopup="true" aria-expanded="false">
-                    <span class="btn-inner--icon"><i class="fas fa-sliders-h"></i></span>
-                    <span class="btn-inner--text d-none d-sm-inline-block">Account</span>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <a class="dropdown-item" href="account-settings.php">Settings</a>
-                    <a class="dropdown-item" href="logout.php">Log Out</a>
-                  </div>
-                </div>
-                <div class="btn-group" role="group">
-                  <button id="btn-group-boards" type="button" class="btn btn-neutral btn-icon" data-toggle="dropdown" data-offset="0,8" aria-haspopup="true" aria-expanded="false">
-                    <span class="btn-inner--icon"><i class="fas fa-chart-line"></i></span>
-                    <span class="btn-inner--text d-none d-sm-inline-block">Board</span>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" aria-labelledby="btn-group-boards">
-                    <a class="dropdown-item" href="board-overview.html">Overview</a>
-                    <a class="dropdown-item" href="board-projects.html">Projects</a>
-                    <a class="dropdown-item" href="board-tasks.html">Tasks</a>
-                    <a class="dropdown-item" href="board-connections.html">Connections</a>
-                  </div>
-                </div>
-                <div class="btn-group" role="group">
-                  <button id="btn-group-listing" type="button" class="btn btn-neutral btn-icon rounded-right" data-toggle="dropdown" data-offset="0,8" aria-haspopup="true" aria-expanded="false">
-                    <span class="btn-inner--icon"><i class="fas fa-list-ul"></i></span>
-                    <span class="btn-inner--text d-none d-sm-inline-block">Listing</span>
-                  </button>
-                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <span class="dropdown-header">Tables</span>
-                    <a class="dropdown-item" href="listing-orders.html">Orders</a>
-                    <a class="dropdown-item" href="listing-projects.html">Projects</a>
-                    <span class="dropdown-header">Flex</span>
-                    <a class="dropdown-item" href="listing-users.html">Users</a>
-                  </div>
-                </div>
-              </div> -->
               </div>
             </div>
           </div>
@@ -550,38 +517,6 @@ else {
         <div class="container">
           <div class="row row-grid">
             <div class="col-lg-9 order-lg-2">
-              <!-- Change avatar 
-            <div class="card bg-gradient-warning hover-shadow-lg">
-              <div class="card-body py-3">
-                <div class="row row-grid align-items-center">
-                  <div class="col-lg-8">
-                    <div class="media align-items-center">
-                      <a href="#" class="avatar avatar-lg rounded-circle mr-3">
-                        <img alt="Image placeholder" src="assets/img/theme/light/team-1-800x800.jpg">
-                      </a>
-                      <div class="media-body">
-                        <h5 class="text-white mb-0">Heather Wright</h5>
-                        <div>
-                          <form>
-                            <input type="file" name="file-1[]" id="file-1" class="custom-input-file custom-input-file-link" data-multiple-caption="{count} files selected" multiple />
-                            <label for="file-1">
-                              <span class="text-white">Change avatar</span>
-                            </label>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right d-none d-lg-block">
-                    <a href="#" class="btn btn-sm btn-white rounded-pill btn-icon shadow">
-                      <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
-                      <span class="btn-inner--text">Upgrade to Pro</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>-->
-              <!-- General information form -->
 
               <form role="form" action="project-image.php" method="POST" enctype="multipart/form-data">
                 <?php
@@ -630,28 +565,30 @@ else {
                     <p class="text-sm text-muted mb-0">Upload your Project Image</p>
                   </div>
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="form-group">
-                        <label class="form-control-label">Project Image 1</label>
+                        <label class="form-control-label h1">Project Image 1</label>
                         <?php if($result->project_1==!NULL) {?>
                         <input class="form-control" name="project_1" type="hidden" value="<?php echo htmlentities($result->project_1);?>">
                         <?php } else {?>
 
-                        <input class="form-control" name="project_1" type="file" value="<?php echo htmlentities($result->project_1);?>">
-                        <?php } ?>
-                      </div>
-                    </div>
+                        <!-- drag and drop -->
+                        <div class="uploadOuter">
+                          <span class="dragBox">
+                            Drag and Drop image here
+                            <input type="file" name="project_1" onChange="dragNdrop(event)" ondragover="drag()" ondrop="drop()" id="uploadFile" />
+                          </span>
+                        </div>
+                        <div id="preview"></div>
+                        <!-- drag and drop end -->
 
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="form-control-label">Project Description 1</label>
-                        <input class="form-control" name="project_desc_1" type="text" placeholder="Project Description" value="<?php echo htmlentities($result->project_desc_1);?>" >
+                        <?php } ?>
                       </div>
                     </div>
 
                     <?php if($result->project_1==!NULL) {?>
 
-                    <div class="col-lg-12" style="max-width: 17%; position: absolute;">
+                    <div class="col-lg-12" style="max-width: 17%; ">
                       <div> <a href="content/<?php echo htmlentities($result->project_1);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_1);?>" class="img-fluid rounded shadow-lg"> </a>
 
                       </div>
@@ -659,36 +596,47 @@ else {
 
                     <?php } else {?>
 
-                    <span>No Project Image Uploaded</span>
+                    <span></span>
 
 
 
                     <?php } ?>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label">Project Description 1</label>
+                        <input class="form-control" name="project_desc_1" type="text" placeholder="Project Description" value="<?php echo htmlentities($result->project_desc_1);?>">
+                      </div>
+                    </div>
+
+
                   </div>
 
+                  <hr />
+
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="form-group">
                         <label class="form-control-label">Project Image 2</label>
                         <?php if($result->project_2==!NULL) {?>
                         <input class="form-control" name="project_2" type="hidden" value="<?php echo htmlentities($result->project_2);?>">
                         <?php } else {?>
-
-                        <input class="form-control" name="project_2" type="file" value="<?php echo htmlentities($result->project_2);?>">
+                        <!-- drag and drop -->
+                        <div class="uploadOuter">
+                          <span class="dragBox">
+                            Drag and Drop image here
+                            <input type="file" name="project_2" onChange="dragNdrop(event)" ondragover="drag()" ondrop="drop()" id="uploadFile" />
+                          </span>
+                        </div>
+                        <div id="preview"></div>
+                        <!-- drag and drop end -->
                         <?php } ?>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="form-control-label">Project Description 2</label>
-                        <input class="form-control" name="project_desc_2" type="text" placeholder="Project Description" value="<?php echo htmlentities($result->project_desc_2);?>" >
                       </div>
                     </div>
 
                     <?php if($result->project_2==!NULL) {?>
 
-                    <div class="col-lg-12" style="max-width: 17%; position: absolute;">
+                    <div class="col-lg-12" style="max-width: 17%; ">
                       <div> <a href="content/<?php echo htmlentities($result->project_2);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_2);?>" class="img-fluid rounded shadow-lg"> </a>
 
                       </div>
@@ -696,37 +644,48 @@ else {
 
                     <?php } else {?>
 
-                    <span>No Project Image Uploaded</span>
+                    <span></span>
 
 
 
                     <?php } ?>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label">Project Description 2</label>
+                        <input class="form-control" name="project_desc_2" type="text" placeholder="Project Description" value="<?php echo htmlentities($result->project_desc_2);?>">
+                      </div>
+                    </div>
+
+
                   </div>
+
+                  <hr />
 
 
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="form-group">
                         <label class="form-control-label">Project Image 3</label>
                         <?php if($result->project_3==!NULL) {?>
                         <input class="form-control" name="project_3" type="hidden" value="<?php echo htmlentities($result->project_3);?>">
                         <?php } else {?>
-
-                        <input class="form-control" name="project_3" type="file" value="<?php echo htmlentities($result->project_3);?>">
+                        <!-- drag and drop -->
+                        <div class="uploadOuter">
+                          <span class="dragBox">
+                            Drag and Drop image here
+                            <input type="file" name="project_3" onChange="dragNdrop(event)" ondragover="drag()" ondrop="drop()" id="uploadFile" />
+                          </span>
+                        </div>
+                        <div id="preview"></div>
+                        <!-- drag and drop end -->
                         <?php } ?>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="form-control-label">Project Description 3</label>
-                        <input class="form-control" name="project_desc_3" type="text" placeholder="Project Description" value="<?php echo htmlentities($result->project_desc_3);?>" >
                       </div>
                     </div>
 
                     <?php if($result->project_3==!NULL) {?>
 
-                    <div class="col-lg-12" style="max-width: 17%; position: absolute;">
+                    <div class="col-lg-12" style="max-width: 17%; ">
                       <div> <a href="content/<?php echo htmlentities($result->project_3);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_3);?>" class="img-fluid rounded shadow-lg"> </a>
 
                       </div>
@@ -734,37 +693,48 @@ else {
 
                     <?php } else {?>
 
-                    <span>No Project Image Uploaded</span>
+                    <span></span>
 
 
 
                     <?php } ?>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label">Project Description 3</label>
+                        <input class="form-control" name="project_desc_3" type="text" placeholder="Project Description" value="<?php echo htmlentities($result->project_desc_3);?>">
+                      </div>
+                    </div>
+
+
                   </div>
+
+                  <hr />
 
 
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="form-group">
                         <label class="form-control-label">Project Image 4</label>
                         <?php if($result->project_4==!NULL) {?>
                         <input class="form-control" name="project_4" type="hidden" value="<?php echo htmlentities($result->project_4);?>">
                         <?php } else {?>
-
-                        <input class="form-control" name="project_4" type="file" value="<?php echo htmlentities($result->project_4);?>">
+                        <!-- drag and drop -->
+                        <div class="uploadOuter">
+                          <span class="dragBox">
+                            Drag and Drop image here
+                            <input type="file" name="project_4" onChange="dragNdrop(event)" ondragover="drag()" ondrop="drop()" id="uploadFile" />
+                          </span>
+                        </div>
+                        <div id="preview"></div>
+                        <!-- drag and drop end -->
                         <?php } ?>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="form-control-label">Project Description 4</label>
-                        <input class="form-control" name="project_desc_4" type="text" placeholder="Project Description" value="<?php echo htmlentities($result->project_desc_4);?>" >
                       </div>
                     </div>
 
                     <?php if($result->project_4==!NULL) {?>
 
-                    <div class="col-lg-12" style="max-width: 17%; position: absolute;">
+                    <div class="col-lg-12" style="max-width: 17%; ">
                       <div> <a href="content/<?php echo htmlentities($result->project_4);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_4);?>" class="img-fluid rounded shadow-lg"> </a>
 
                       </div>
@@ -772,36 +742,48 @@ else {
 
                     <?php } else {?>
 
-                    <span>No Project Image Uploaded</span>
+                    <span></span>
 
 
 
                     <?php } ?>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label">Project Description 4</label>
+                        <input class="form-control" name="project_desc_4" type="text" placeholder="Project Description" value="<?php echo htmlentities($result->project_desc_4);?>">
+                      </div>
+                    </div>
+
+
                   </div>
 
+
+                  <hr />
+
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="form-group">
                         <label class="form-control-label">Project Image 5</label>
                         <?php if($result->project_5==!NULL) {?>
                         <input class="form-control" name="project_5" type="hidden" value="<?php echo htmlentities($result->project_5);?>">
                         <?php } else {?>
-
-                        <input class="form-control" name="project_5" type="file" value="<?php echo htmlentities($result->project_5);?>">
+                        <!-- drag and drop -->
+                        <div class="uploadOuter">
+                          <span class="dragBox">
+                            Drag and Drop image here
+                            <input type="file" name="project_5" onChange="dragNdrop(event)" ondragover="drag()" ondrop="drop()" id="uploadFile" />
+                          </span>
+                        </div>
+                        <div id="preview"></div>
+                        <!-- drag and drop end -->
                         <?php } ?>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="form-control-label">Project Description 5</label>
-                        <input class="form-control" name="project_desc_5" type="text" placeholder="Project Description" value="<?php echo htmlentities($result->project_desc_5);?>" >
                       </div>
                     </div>
 
                     <?php if($result->project_5==!NULL) {?>
 
-                    <div class="col-lg-12" style="max-width: 17%; position: absolute;">
+                    <div class="col-lg-12" style="max-width: 17%; ">
                       <div> <a href="content/<?php echo htmlentities($result->project_5);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_5);?>" class="img-fluid rounded shadow-lg"> </a>
 
                       </div>
@@ -809,36 +791,48 @@ else {
 
                     <?php } else {?>
 
-                    <span>No Project Image Uploaded</span>
+                    <span></span>
 
 
 
                     <?php } ?>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label">Project Description 5</label>
+                        <input class="form-control" name="project_desc_5" type="text" placeholder="Project Description" value="<?php echo htmlentities($result->project_desc_5);?>">
+                      </div>
+                    </div>
+
+
                   </div>
 
+
+                  <hr />
+
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       <div class="form-group">
                         <label class="form-control-label">Project Image 6</label>
                         <?php if($result->project_6==!NULL) {?>
                         <input class="form-control" name="project_6" type="hidden" value="<?php echo htmlentities($result->project_6);?>">
                         <?php } else {?>
-
-                        <input class="form-control" name="project_6" type="file" value="<?php echo htmlentities($result->project_6);?>">
+                        <!-- drag and drop -->
+                        <div class="uploadOuter">
+                          <span class="dragBox">
+                            Drag and Drop image here
+                            <input type="file" name="project_6" onChange="dragNdrop(event)" ondragover="drag()" ondrop="drop()" id="uploadFile" />
+                          </span>
+                        </div>
+                        <div id="preview"></div>
+                        <!-- drag and drop end -->
                         <?php } ?>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="form-control-label">Project Description 6</label>
-                        <input class="form-control" name="project_desc_6" type="text" placeholder="Project Description" value="<?php echo htmlentities($result->project_desc_6);?>" >
                       </div>
                     </div>
 
                     <?php if($result->project_6==!NULL) {?>
 
-                    <div class="col-lg-12" style="max-width: 17%; position: absolute;">
+                    <div class="col-lg-12" style="max-width: 17%; ">
                       <div> <a href="content/<?php echo htmlentities($result->project_6);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->project_6);?>" class="img-fluid rounded shadow-lg"> </a>
 
                       </div>
@@ -846,14 +840,23 @@ else {
 
                     <?php } else {?>
 
-                    <span>No Project Image Uploaded</span>
+                    <span></span>
 
 
 
                     <?php } ?>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label">Project Description 6</label>
+                        <input class="form-control" name="project_desc_6" type="text" placeholder="Project Description" value="<?php echo htmlentities($result->project_desc_6);?>">
+                      </div>
+                    </div>
+
+
                   </div>
 
-
+                  <hr />
 
                 </div>
                 <!-- Save changes buttons -->
@@ -961,12 +964,12 @@ else {
             </div>
           </div>
           <div class="row align-items-center justify-content-md-between py-4 mt-4 delimiter-top">
-            <div class="col-md-6">
+            <div class="col-md-12">
               <div class="copyright text-sm font-weight-bold text-center text-md-left">
                 &copy; 2020 <a href="#" class="font-weight-bold"></a>. All rights reserved.
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
               <ul class="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
                 <li class="nav-item">
                   <a class="nav-link" href="#">

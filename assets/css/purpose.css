@@ -518,7 +518,7 @@ hr {
   margin-top: 2rem;
   margin-bottom: 2rem;
   border: 0;
-  border-top: 1px solid #eff2f7
+  border-top: 3px solid #eff2f7
 }
 
 .small,
@@ -28544,4 +28544,47 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 
 .bootstrap-tagsinput .badge:hover [data-role=remove] {
   opacity: 1
+}
+
+
+.uploadOuter {
+  text-align: center;
+  padding: 20px;
+
+  strong {
+    padding: 0 10px
+  }
+}
+
+.dragBox {
+  width: 250px;
+  height: 100px;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  font-weight: bold;
+  color: #999;
+  border: 2px dashed #ccc;
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+input[type="file"] {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  top: 0;
+  left: 0;
+}
+
+.draging {
+  transform: scale(1.1);
+}
+
+#preview {
+  text-align: center;
+}
+
+#preview img {
+  max-width: 50%;
 }

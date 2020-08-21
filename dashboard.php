@@ -89,7 +89,7 @@ else {
     $query->bindParam(':fileName',$fileName,PDO::PARAM_STR);
     $query->execute();
 
-    echo '<script>alert("Your profile has been updated")</script>';
+    echo '<script>alert("We will verify your profile and respond you within 12 hours")</script>';
     }
 
   //   if(isset($_GET['del']))
@@ -130,6 +130,8 @@ else {
     <link rel="stylesheet" href="assets/libs/flatpickr/dist/flatpickr.min.css">
     <!-- Purpose CSS -->
     <link rel="stylesheet" href="assets/css/purpose.css" id="stylesheet">
+
+
   </head>
 
   <body>
@@ -1006,7 +1008,18 @@ else {
                         <input class="form-control" name="" type="hidden">
                         <?php } else {?>
 
-                        <input class="form-control" name="profile" type="file">
+                        <!-- drag and drop -->
+                        <div class="uploadOuter">
+                          <label for="uploadFile" class="btn btn-sm bg-gradient-primary text-white">Upload Image</label>
+                          <strong>OR</strong>
+                          <span class="dragBox">
+                            Drag and Drop image here
+                            <input type="file" name="profile" onChange="dragNdrop(event)" ondragover="drag()" ondrop="drop()" id="uploadFile" />
+                          </span>
+                        </div>
+                        <div id="preview"></div>
+                        <!-- drag and drop end -->
+
                         <?php } ?>
                       </div>
                     </div>
@@ -1014,13 +1027,13 @@ else {
                     <?php if($result->profile==!NULL) {?>
 
                     <div class="col-lg-12" style="max-width: 17%;">
-                      <div> 
+                      <div>
                         <!-- <button type="submit" name="del" class="btn btn-youtube rounded-circle btn-icon-only" style="position: absolute; right: 0; width: 2rem;    height: 2rem;    line-height: 2rem;">
                         <span class="btn-inner--icon">
                             <i class="fas fa-times"></i>
                         </span>
                     </button> -->
-                    <a href="content/<?php echo htmlentities($result->profile);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->profile);?>" class="img-fluid rounded shadow-lg"> </a>
+                        <a href="content/<?php echo htmlentities($result->profile);?>" data-fancybox="pp"> <img alt="Image placeholder" src="content/<?php echo htmlentities($result->profile);?>" class="img-fluid rounded shadow-lg"> </a>
 
                       </div>
                     </div>
@@ -1040,6 +1053,7 @@ else {
                 <div class="pt-5 mt-5 delimiter-top text-center">
                   <button type="submit" name="update" class="btn btn-sm bg-gradient-primary text-white">Save changes</button>
                   <!-- <button type="button" class="btn btn-link text-muted">Cancel</button> -->
+
                 </div>
                 <?php }} ?>
               </form>
