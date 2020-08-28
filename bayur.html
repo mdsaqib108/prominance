@@ -16,11 +16,7 @@
     <link rel="stylesheet" href="assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
     <!-- Purpose CSS -->
     <link rel="stylesheet" href="assets/css/purpose.css" id="stylesheet">
-
-
   </head>
-  
-    
 
   <body>
     <header class="header" id="header-main">
@@ -322,108 +318,148 @@
         </div>
       </nav>
     </header>
-
-
     <div class="main-content">
-    <div class="main-content">
-    <section class="slice slice-lg min-vh-100 d-flex align-items-center bg-section-secondary">
-      <!-- SVG background -->
-      <div class="bg-absolute-cover bg-size--contain d-none d-lg-block">
-        <figure class="w-100">
-          <img alt="Image placeholder" src="assets/img/bg.svg" class="svg-inject">
-        </figure>
-      </div>
-      <div class="container py-5 px-md-0 d-flex align-items-center">
-        <div class="w-100">
-          <div class="row row-grid justify-content-center justify-content-lg-between align-items-center">
-            <div class="col-sm-8 col-lg-6 col-xl-5 order-lg-2">
-              <div class="card shadow zindex-100 mb-0">
-                <div class="card-body px-md-5 py-5">
-                  <div class="mb-5">
-                    <h6 class="h3">Create account</h6>
+
+      <section class="pt-5 pb-5 ">
+            <div class="container d-flex align-items-end px-0 pt-4">
+              <div class="col">
+                <div class="row align-items-center justify-content-around">
+                  <div class="col-lg-6 text-center text-lg-left">
+                    <h1>Gökhan Bayur, Turkey</h1>
+                    <p class="lead mt-4">We design and present all the spaces to be designed in 3D environment by using all the products to be used in the project.</p>
+                    <div class="mt-5">
+                      <a href="#know-more" class="btn bg-gradient-primary btn-icon rounded-pill hover-translate-y-n3 mr-4">
+                        <span class="btn-inner--text text-white">Know more about me</span>
+                      </a>
+                      <a href="#my-works" class="btn btn-outline-dark rounded-pill hover-translate-y-n3 d-none d-lg-inline-block">See my works</a>
+                    </div>
                   </div>
-                  <span class="clearfix"></span>
-                  <form role="form" action="register.php" method="POST" onSubmit="return valid();" enctype="multipart/form-data">
-                    <div class="row">
-                      <div class="form-group col-6">
-                      <label class="form-control-label">First Name</label>
-                      <div class="input-group input-group-merge">
-                        <input type="text" name="first_name" class="form-control" id="" placeholder="John" required>
-                      </div>
-                      </div>
-
-                      <div class="form-group col-6">
-                      <label class="form-control-label">Last Name</label>
-                      <div class="input-group input-group-merge">
-                        <input type="text" name="last_name" class="form-control" id="" placeholder="Doe">
-                      </div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label class="form-control-label">Username</label>
-                      <div class="input-group input-group-merge">
-                        <input type="text" name="username" class="form-control" id="" placeholder="john_doe" required>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label class="form-control-label">Email address</label>
-                      <div class="input-group input-group-merge">
-                        <input type="email" name="email" class="form-control" onBlur="checkAvailability()" placeholder="name@example.com" required>
-                      </div>
-                        <span id="user-availability-status"></span>
-                    </div>
-                    <div class="form-group mb-4">
-                      <label class="form-control-label">Password</label>
-                      <div class="input-group input-group-merge">
-                        <input type="password" class="form-control" name="password" id="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.confirmpassword.pattern = this.value;" placeholder="********" required>
-                        <div class="input-group-append">
-                          <span class="input-group-text">
-                            <i class="fas fa-eye"></i>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label class="form-control-label">Confirm password</label>
-                      <div class="input-group input-group-merge">
-                        <input class="form-control" type="password" name="confirmpassword" id="confirmpassword" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" placeholder="********" required>
-                      </div>
-                    </div>
-                    <div class="my-4">
-                      <div class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input" id="check-terms" required>
-                        <label class="custom-control-label" for="check-terms">I agree to the <a href="#">terms and conditions</a></label>
-                      </div>
-                      <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check-privacy" required>
-                        <label class="custom-control-label" for="check-privacy">I agree to the <a href="#">privacy policy</a></label>
-                      </div>
-                    </div>
-                    <div class="mt-4"><button type="submit" class="btn btn-sm bg-gradient-primary text-white btn-icon rounded-pill">
-                        <span class="btn-inner--text">Create my account</span>
-                        <span class="btn-inner--icon"><i class="fas fa-long-arrow-alt-right"></i></span>
-                      </button></div>
-                  </form>
+                  <div class="col-lg-6 mt-5 mt-lg-0 align-self-end">
+                    <img alt="Image placeholder" src="assets/img/Bayur/Gökhan-BAYUR-Siyah.png" class="img-fluid img-center">
+                  </div>
                 </div>
-                <div class="card-footer px-md-5"><small>Already have an acocunt?</small>
-                  <a href="login.html" class="small font-weight-bold">Sign in</a></div>
               </div>
             </div>
-            <div class="col-lg-6 order-lg-1 d-none d-lg-block">
-              <blockquote>
-                <h3 class="h2 mb-4">Design & Transform Lives </h3>
-                <p class="lead ">Leverage your unique design skills and engage with a whole new world of clients who’re eager to receive your designs.</p>
-              </blockquote>
+          </section>
+
+
+
+          <section class="pt-5 pb-10" id="know-more">
+            <div class="container">
+              <div class="row row-grid">
+                <div class="col-lg-12 text-center">
+                  <p class="lead mt-4 ">Tasarlanacak tüm mekanları projede kullanılacak tüm ürünleri kullanarak 3D ortamında Projelendiriyor ve sunuyoruz.Fayanstan-Armatüre, Mobilyadan-Perdeye, Yer-Duvar-Tavan kaplamalarından Aksesuara, 70'in Üzerinde firma 15.000 çeşidin üzerinde ürünle Üretim</p>
+                  <!-- <a href="#" class="btn bg-gradient-primary btn-icon rounded-pill hover-scale-110 mt-4">
+                    <span class="btn-inner--icon text-white">
+                      <i class="fas fa-angle-right"></i>
+                    </span>
+                    <span class="btn-inner--text text-white">Read more</span>
+                  </a> -->
+                </div>
+                
+                <div class="col-lg-12 row pt-5 text-lg-left">
+
+                  <div class="col-lg-4">
+                  <div class="">
+                    <img alt="Image placeholder" src="assets/img/Bayur/Gökhan-BAYUR-Siyah.png" class="img-fluid rounded shadow-lg hover-scale-110">
+                  </div>
+                </div>
+
+                  <div class="col-lg-4">
+                  <div class="mt-lg-auto pt-3">
+                    <h3><span class="sub-head">Design Style</span></h3>
+                    <p class="lead">Traditional. Farm style and simplicity </p>
+                  </div>
+
+                  <div class="mt-lg-auto pt-5">
+                    <h3><span class="sub-head">Experience</span></h3>
+                    <p class="lead">5+ years in the industry and extra help giving for love and charity </p>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="mt-lg-auto pt-3">
+                    <h3><span class="sub-head">Expertise</span></h3>
+                    <p class="lead">Houses</p>
+                  </div>
+
+                  <div class="mt-lg-auto pt-5">
+                    <h3><span class="sub-head">Specialisation</span></h3>
+                    <p class="lead">Kitchens bathrooms gardens, bbq areas, living rooms</p>
+                  </div>
+
+                  
+                </div>
+
+                  <!-- <div class="mt-lg-auto">
+                    <p class="lead mb-0">You can now relax because we will take care of everything else.</p>
+                    <div class="row align-items-center mt-5">
+                      <div class="col-xl-4">
+                        <small class="d-block text-uppercase text-muted ls-1 font-weight-600">Share:</small>
+                      </div>
+                      <div class="col-xl-8">
+                        <ul class="nav ml-lg-auto mb-0">
+                          <li class="nav-item">
+                            <a class="nav-link pl-0" href="#"><i class="fab fa-instagram"></i></a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fab fa-facebook"></i></a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fab fa-twitter"></i></a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div> -->
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-  </div>
+          </section>
 
 
-  <footer id="footer-main">
+
+          <div id="my-works"></div>
+          <section class="pt-5 mt-5 pb-5" >
+            <div class="container">
+              <!-- <div class="mb-5 text-center">
+                <h3 class=" mt-4">Our projects</h3>
+                <div class="fluid-paragraph mt-3">
+                  <p class="lead lh-180">Always looking for better ways to do things, innovate and help people achieve their goals.</p>
+                </div>
+              </div> -->
+              <div class="row justify-content-center">
+                <div class="col-lg-4">
+                  <div class="card hover-shadow-lg ">
+                    <div class="card-image p-0">
+                      <a href="assets/img/Bayur/Salon-2.jpg" data-fancybox="apps">
+                        <img alt="Image placeholder" src="assets/img/Bayur/Salon-2.jpg" class="card-img">
+                      </a>
+                    </div>
+                    <div class="">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="card hover-shadow-lg ">
+                    <div class="card-image p-0">
+                      <a href="assets/img/Bayur/Salon-3.jpg" data-fancybox="apps">
+                        <img alt="Image placeholder" src="assets/img/Bayur/Salon-3.jpg" class="card-img">
+                      </a>
+                    </div>
+                    
+                  </div>
+                </div>
+                
+                
+              </div>
+              
+            </div>
+          </section>
+
+
+    </div>
+<footer id="footer-main">
       <div class="footer footer-dark" style="background: linear-gradient(90deg, #3dc1ed 0%, #7ac49d 100%);">
         <div class="container">
           <div class="row pt-md">

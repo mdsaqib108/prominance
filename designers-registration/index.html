@@ -96,7 +96,7 @@
 		                    		<input type="email" name="email" class="" placeholder="Email*" required>
 		                    	</div>
 		                    	<div class="col-sm-12">
-		                    		<input type="password" name="password" id="password" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.confirmpassword.pattern = this.value;" class="text-dark	" placeholder="Password*" required>
+		                    		<input type="password" name="password" id="password" pattern="^\S{6,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.confirmpassword.pattern = this.value;" class="text-dark" placeholder="Password*" required>
 		                    	</div>
 		                    	<div class="col-sm-12">
 		                    		<input type="password" name="confirmpassword" id="confirmpassword" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" class="" placeholder="Confirm Password*" required>

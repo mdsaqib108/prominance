@@ -89,7 +89,8 @@ else {
     $query->bindParam(':fileName',$fileName,PDO::PARAM_STR);
     $query->execute();
 
-    echo '<script>alert("We will verify your profile and respond you within 12 hours")</script>';
+    echo '<script>alert("We will verify your profile and respond you within 12 hours"); window.location = "project-image.php";</script>';
+    
     }
 
   //   if(isset($_GET['del']))
