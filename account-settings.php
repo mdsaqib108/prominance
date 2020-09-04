@@ -190,7 +190,7 @@ $error="Your current password is wrong";
                       </ul>
                     </li>
                     <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
-                      <a href="#" class="list-group-item list-group-item-action dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <a href="bedroom.html" class="list-group-item list-group-item-action dropdown-toggle" role="button" ><!-- data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" -->
                         <div class="media d-flex align-items-center">
                           <!-- SVG icon -->
                           <figure style="width: 50px;">
@@ -202,7 +202,7 @@ $error="Your current password is wrong";
                           </div>
                         </div>
                       </a>
-                      <ul class="dropdown-menu">
+                      <!-- <ul class="dropdown-menu">
                         <li>
                           <a href="wardrobe-and-storage-unit.html" class="list-group-item list-group-item-action" role="button">
                             <div class="media d-flex align-items-center">
@@ -250,7 +250,7 @@ $error="Your current password is wrong";
                             </div>
                           </a>
                         </li>
-                      </ul>
+                      </ul> -->
                     </li>
                     <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
                       <a href="#" class="list-group-item list-group-item-action dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
