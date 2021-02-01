@@ -1,49 +1,1191 @@
 <!DOCTYPE html>
-<html>
-<head>
- <title></title>
+<html lang="en">
 
-</head>
-<body>
- <section>
-  <form action="" method="POST" enctype="multipart/form-data">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="form-group">
-            <label class="control-label">Upload File</label>
-            <div class="preview-zone hidden">
-              <div class="box box-solid">
-                <div class="box-header with-border">
-                  <div><b>Preview</b></div>
-                  <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-danger btn-xs remove-preview">
-                      <i class="fa fa-times"></i> Reset This Form
-                    </button>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title></title>
+    <!-- Favicon -->
+    <link rel="icon" href="assets/img/favicon.png" type="image/png">
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="assets/libs/@fortawesome/fontawesome-free/css/all.min.css"><!-- Page CSS -->
+    <link rel="stylesheet" href="assets/libs/animate.css/animate.min.css">
+    <link rel="stylesheet" href="assets/libs/swiper/dist/css/swiper.min.css">
+    <link rel="stylesheet" href="assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
+    <!-- Purpose CSS -->
+    <link rel="stylesheet" href="assets/css/purpose.css" id="stylesheet">
+  </head>
+
+  <body>
+    <header class="header" id="header-main">
+      <!-- Topbar -->
+      <div id="navbar-top-main" class="navbar-top  bg-dark border-bottom" style="background: linear-gradient(90deg, #3dc1ed 0%, #7ac49d 100%); color: #fff;">
+        <div class="container" style="width: auto !important; margin-left: 1%">
+          <ul class="nav">
+            <li class="nav-item dropdown ml-lg-2 mr-3 ">
+              <a class="nav-link px-0" href="#">
+                <span class="d-lg-inline-block">Locate Stores</span>
+              </a>
+              <!-- <div class="dropdown-menu dropdown-menu-sm">
+                  <a href="#" class="dropdown-item"><img src="assets/img/icons/flags/es.svg">Spanish</a>
+                  <a href="#" class="dropdown-item"><img src="assets/img/icons/flags/ro.svg">Romanian</a>
+                  <a href="#" class="dropdown-item"><img src="assets/img/icons/flags/gr.svg">Greek</a>
+                </div> -->
+            </li>
+            <li class="nav-item dropdown ml-lg-2 mr-3">
+              <a class="nav-link px-0" href="#">
+                <span class="d-lg-inline-block">How it works</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown ml-lg-2">
+              <a class="nav-link px-0" href="#why-prominance">
+                <span class="d-lg-inline-block">Why Prominance </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="ml-auto mr-3">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Designers Login</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link" href="#">1800 833 4500 <span class="fa fa-phone"></span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      </div>
+      </div>
+      <!-- Main navbar -->
+      <nav class="navbar navbar-main navbar-expand-lg navbar-light bg-light navbar-sticky sticky" id="navbar-main">
+        <div class="container px-lg-0">
+          <!-- Logo -->
+          <a class="navbar-brand mr-lg-5" href="index.html">
+            <img src="assets/img/main-logo.png" id="navbar-logo" style="height: 50px;">
+          </a>
+          <!-- Navbar collapse trigger -->
+          <button class="navbar-toggler pr-0" type="button" data-toggle="collapse" data-target="#navbar-main-collapse" aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Navbar nav -->
+          <div class="collapse navbar-collapse" id="navbar-main-collapse">
+            <ul class="navbar-nav align-items-lg-center">
+              <!-- Home - Overview  -->
+              <!-- <li class="nav-item d-lg-none d-xl-block">
+              <a class="nav-link" href="docs/changelog.html">Home</a>
+            </li> -->
+              <li class="nav-item d-lg-none d-xl-block">
+                <a class="nav-link" href="about.html">About us</a>
+              </li>
+              <!-- Pages menu -->
+              <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+                <div class="dropdown-menu dropdown-menu-lg p-0">
+                  <ul class="list-group list-group-flush">
+                    <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
+                      <a href="#" class="list-group-item list-group-item-action dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="media d-flex align-items-center">
+                          <!-- SVG icon -->
+                          <figure style="width: 50px;">
+                            <img src="assets/img/icons/interio-icons-kitchen.png" class="svg-inject img-fluid" style="height: 50px;">
+                          </figure>
+                          <!-- Media body -->
+                          <div class="media-body ml-3">
+                            <h6 class="mb-1">Kitchen</h6>
+                          </div>
+                        </div>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a href="modular-kitchens.html" class="list-group-item list-group-item-action" role="button">
+                            <div class="media d-flex align-items-center">
+                              <figure style="width: 50px;">
+                                <img src="assets/img/icons/interio-icons-modular-kitchen.png" class="svg-inject img-fluid" style="height: 50px;">
+                              </figure>
+                              <div class="media-body ml-3">
+                                <h6 class="mb-1">Modular Kitchen</h6>
+                              </div>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
+                      <a href="#" class="list-group-item list-group-item-action dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="media d-flex align-items-center">
+                          <!-- SVG icon -->
+                          <figure style="width: 50px;">
+                            <img src="assets/img/icons/interio-icons-living-room.png" class="svg-inject img-fluid" style="height: 50px;">
+                          </figure>
+                          <!-- Media body -->
+                          <div class="media-body ml-3">
+                            <h6 class="mb-1">Living Room</h6>
+                          </div>
+                        </div>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a href="tv-units.html" class="list-group-item list-group-item-action" role="button">
+                            <div class="media d-flex align-items-center">
+                              <figure style="width: 50px;">
+                                <img src="assets/img/icons/interio-icons-tv-units.png" class="svg-inject img-fluid" style="height: 50px;">
+                              </figure>
+                              <div class="media-body ml-3">
+                                <h6 class="mb-1">TV Units</h6>
+                              </div>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
+                      <a href="bedroom.html" class="list-group-item list-group-item-action dropdown-toggle" role="button" ><!-- data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" -->
+                        <div class="media d-flex align-items-center">
+                          <!-- SVG icon -->
+                          <figure style="width: 50px;">
+                            <img src="assets/img/icons/interio-icons-bed-room.png" class="svg-inject img-fluid" style="height: 50px;">
+                          </figure>
+                          <!-- Media body -->
+                          <div class="media-body ml-3">
+                            <h6 class="mb-1">Bed Room</h6>
+                          </div>
+                        </div>
+                      </a>
+                      <!-- <ul class="dropdown-menu">
+                        <li>
+                          <a href="wardrobe-and-storage-unit.html" class="list-group-item list-group-item-action" role="button">
+                            <div class="media d-flex align-items-center">
+                              <figure style="width: 50px;">
+                                <img src="assets/img/icons/interio-icons-wardrobe.png" class="svg-inject img-fluid" style="height: 50px;">
+                              </figure>
+                              <div class="media-body ml-3">
+                                <h6 class="mb-1">Wardrobe & Storage Unit</h6>
+                              </div>
+                            </div>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="cot.html" class="list-group-item list-group-item-action" role="button">
+                            <div class="media d-flex align-items-center">
+                              <figure style="width: 50px;">
+                                <img src="assets/img/icons/interio-icons-cot.png" class="svg-inject img-fluid" style="height: 50px;">
+                              </figure>
+                              <div class="media-body ml-3">
+                                <h6 class="mb-1">Cot</h6>
+                              </div>
+                            </div>
+                          </a>
+                        <li>
+                          <a href="side-tables.html" class="list-group-item list-group-item-action" role="button">
+                            <div class="media d-flex align-items-center">
+                              <figure style="width: 50px;">
+                                <img src="assets/img/icons/interio-icons-side-table.png" class="svg-inject img-fluid" style="height: 50px;">
+                              </figure>
+                              <div class="media-body ml-3">
+                                <h6 class="mb-1">Side Tables</h6>
+                              </div>
+                            </div>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="study-units.html" class="list-group-item list-group-item-action" role="button">
+                            <div class="media d-flex align-items-center">
+                              <figure style="width: 50px;">
+                                <img src="assets/img/icons/interio-icons-study-table.png" class="svg-inject img-fluid" style="height: 50px;">
+                              </figure>
+                              <div class="media-body ml-3">
+                                <h6 class="mb-1">Study Units</h6>
+                              </div>
+                            </div>
+                          </a>
+                        </li>
+                      </ul> -->
+                    </li>
+                    <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
+                      <a href="#" class="list-group-item list-group-item-action dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="media d-flex align-items-center">
+                          <!-- SVG icon -->
+                          <figure style="width: 50px;">
+                            <img src="assets/img/icons/interio-icons-wardrobe.png" class="svg-inject img-fluid" style="height: 50px;">
+                          </figure>
+                          <!-- Media body -->
+                          <div class="media-body ml-3">
+                            <h6 class="mb-1">Storage</h6>
+                          </div>
+                        </div>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a href="shoe-units.html" class="list-group-item list-group-item-action" role="button">
+                            <div class="media d-flex align-items-center">
+                              <figure style="width: 50px;">
+                                <img src="assets/img/icons/interio-icons-shoe-rack.png" class="svg-inject img-fluid" style="height: 50px;">
+                              </figure>
+                              <div class="media-body ml-3">
+                                <h6 class="mb-1">Shoe Units</h6>
+                              </div>
+                            </div>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="crockery-units.html" class="list-group-item list-group-item-action" role="button">
+                            <div class="media d-flex align-items-center">
+                              <figure style="width: 50px;">
+                                <img src="assets/img/icons/interio-icons-crockery.png" class="svg-inject img-fluid" style="height: 50px;">
+                              </figure>
+                              <div class="media-body ml-3">
+                                <h6 class="mb-1">Crockery Unit</h6>
+                              </div>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
+                      <a href="#" class="list-group-item list-group-item-action dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <div class="media d-flex align-items-center">
+                          <!-- SVG icon -->
+                          <figure style="width: 50px;">
+                            <img src="assets/img/icons/interio-icons-study-table.png" class="svg-inject img-fluid" style="height: 50px;">
+                          </figure>
+                          <!-- Media body -->
+                          <div class="media-body ml-3">
+                            <h6 class="mb-1">Fancy Units</h6>
+                          </div>
+                        </div>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a href="foyer-units.html" class="list-group-item list-group-item-action" role="button">
+                            <div class="media d-flex align-items-center">
+                              <figure style="width: 50px;">
+                                <img src="assets/img/icons/interio-icons-foyer.png" class="svg-inject img-fluid" style="height: 50px;">
+                              </figure>
+                              <div class="media-body ml-3">
+                                <h6 class="mb-1">Foyer Units</h6>
+                              </div>
+                            </div>
+                          </a>
+                        </li>
+
+                        <li>
+                          <a href="pooja-units.html" class="list-group-item list-group-item-action" role="button">
+                            <div class="media d-flex align-items-center">
+                              <figure style="width: 50px;">
+                                <img src="assets/img/icons/interio-icons-pooja-unit.png" class="svg-inject img-fluid" style="height: 50px;">
+                              </figure>
+                              <div class="media-body ml-3">
+                                <h6 class="mb-1">Pooja Units</h6>
+                              </div>
+                            </div>
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <!--  <li class="nav-item d-lg-none d-xl-block">
+              <a class="nav-link" href="docs/changelog.html">Consult Online </a>
+            </li> -->
+              <li class="nav-item d-lg-none d-xl-block">
+                <a class="nav-link" href="#testimonials">Testimonials</a>
+              </li>
+              <li class="nav-item d-lg-none d-xl-block">
+                <a class="nav-link" href="#inspirations">Inspirations</a>
+              </li>
+              <li class="nav-item d-lg-none d-xl-block">
+                <a class="nav-link" href="#design-blog">Design Blogs</a>
+              </li>
+              <li class="nav-item mr-0">
+                <a href="#" class="nav-link d-lg-none">Design your Own</a>
+                <a href="#" class="btn btn-sm btn-icon rounded-pill d-none d-lg-inline-flex" style="background: linear-gradient(90deg, #3dc1ed 0%, #7ac49d 100%); color: #fff;">
+                  <span class="btn-inner--text">Design your Own</span>
+                </a>
+              </li>
+              <li class="nav-item ml-3">
+                <a href="#" class="nav-link d-lg-none">Get 3D Layout Instant</a>
+                <a href="#" class="btn btn-sm btn-icon rounded-pill d-none d-lg-inline-flex" style="background: linear-gradient(90deg, #3dc1ed 0%, #7ac49d 100%); color: #fff;">
+                  <span class="btn-inner--text">Get 3D Layout Instant</span>
+                </a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+    <div class="main-content">
+
+      <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <section class="slice slice-xl bg-cover bg-size--cover" data-offset-top="#header-main" style="background-image: url(assets/img/provinance-banner-1.jpg); background-position: center; background-repeat: no-repeat; background-size: cover; max-height: 630px;">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-4 ">
+                    <div class="card py-5 px-4 box-shadow-3" style="height: 550px !important; ">
+                      <div class="card-body text-center">
+                        <h3>Meet Our Designer Online</h3>
+                        <form class="mt-4 mb-4">
+                          <div class="form-group">
+                            <label class="sr-only">Your name</label>
+                            <input class="form-control " placeholder="*Your name" type="text" required>
+                          </div>
+                          <div class="form-group">
+                            <label class="sr-only">Email address</label>
+                            <input class="form-control " placeholder="*Email address" type="email" required>
+                          </div>
+                          <div class="form-group">
+                            <label class="sr-only">Phone</label>
+                            <input class="form-control " placeholder="*Phone" type="text" required>
+                          </div>
+                          <button type="submit" class="btn rounded-pill mt-4" style="background: linear-gradient(90deg, #3dc1ed 0%, #7ac49d 100%); color: #fff;">Send message</button>
+                        </form>
+                        <p>In house designers and experts to make you the perfect interior decor.</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="box-body"></div>
+              </div>
+            </section>
+          </div>
+          <div class="carousel-item">
+            <section class="slice slice-xl bg-cover bg-size--cover" data-offset-top="#header-main" style="background-image: url(assets/img/provinance-banner-2.jpg); background-position: center 30%; background-repeat: no-repeat; background-size: cover; ">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-4 ">
+                    <div class="card pt-4 px-4 box-shadow-3" style="height: 300px !important; margin-top: 35%">
+                      <div class="card-body text-center">
+                        <h3>Get Global Designers</h3>
+                        <!-- <img src="assets/img/interio-banner-01.png" class="mb-4" style="width: 200px !important;"> -->
+                        <p>Consult design mavericks from across the globe for your interior decor.</p>
+                        <button type="submit" class="btn rounded-pill mt-4" style="background: linear-gradient(90deg, #3dc1ed 0%, #7ac49d 100%); color: #fff;"><a href="#" class="text-white">Know More</a></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="carousel-item">
+            <section class="slice slice-xl bg-cover bg-size--cover" data-offset-top="#header-main" style="background-image: url(assets/img/provinance-banner-3.jpg); background-position: center 30%; background-repeat: no-repeat; background-size: cover; ">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-4 ">
+                    <div class="card pt-3 px-4 box-shadow-3" style="height: 300px !important; margin-top: 35%">
+                      <div class="card-body text-center">
+                        <h3>Do it your way </h3>
+                        <!-- <img src="assets/img/interio-banner-03.png" class="mb-4" style="width: 200px !important;"> -->
+                        <p>Design your own interior decor and have it done exactly how you pictured it.</p>
+                        <button type="submit" class="btn rounded-pill mt-4" style="background: linear-gradient(90deg, #3dc1ed 0%, #7ac49d 100%); color: #fff;"><a href="#" class="text-white">Know More</a></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="carousel-item">
+            <section class="slice slice-xl bg-cover bg-size--cover" data-offset-top="#header-main" style="background-image: url(assets/img/provinance-banner-4.jpg); background-position: center 30%; background-repeat: no-repeat; background-size: cover;">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-4 ">
+                    <div class="card pt-2 px-4 box-shadow-3" style="height: 300px !important; margin-top: 35%">
+                      <div class="card-body text-center">
+                        <h3>Smaller Price Tags, Bigger Standards</h3>
+                        <!-- <img src="assets/img/interio-banner-02.png" class="mb-4" style="width: 200px !important;"> -->
+                        <p>Our in house manufacturing unit lets us control the quality as well as the final price.</p>
+                        <button type="submit" class="btn rounded-pill mt-4" style="background: linear-gradient(90deg, #3dc1ed 0%, #7ac49d 100%); color: #fff;"><a href="#" class="text-white">Know More</a></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+      <section class="pt-6 pb-5 mt-7">
+        <div class="container">
+          <div class="mb-5 text-center">
+                <h1 class=" mt-4 text-uppercase">Designing Reinvigorated </h1>
+                <h4 class=" text-white"><span class="sub-head">Our highlights</span></h4>
+                <div class="fluid-paragraph mt-3">
+                  <p class="lead lh-180"><!-- We are ahead of our competitors because we possess an array of avenues for you to conceptualise and apply your vision into the final design. We have experts from across the country and the world for you to work. To make it even easier, we have ways in which you can personally control the process.  -->Our superiority is a two-fold achievement: through employing the highest standard of resources and making the process easier</p>
+                </div>
+              </div>
+          <div class="row">
+            <div class="col-lg-3 pr-5">
+              <div class="card pl-2 " style="min-height: 425px !important;">
+                <a href="#">
+                  <img src="assets/img/interio-banner-sketch-to-3d.png" class="card-img-top">
+                </a>
+                <div class="card-body text-center">
+                  <a href="#" class="d-block h6 lh-150">Absolutely Free</a>
+                  <p class="text-muted  mb-0">Convert your Hand drawn floor plans to 3D Plans</p>
+                </div>
+
               </div>
             </div>
-            <div class="dropzone-wrapper">
-              <div class="dropzone-desc">
-                <i class="glyphicon glyphicon-download-alt"></i>
-                <p>Choose an image file or drag it here.</p>
+            <div class="col-lg-3 pr-5">
+              <div class="card pl-2 pr-2" style="min-height: 425px !important;">
+                <a href="#">
+                  <img src="assets/img/interio-banner-consultation.png" class="card-img-top">
+                </a>
+                <div class="card-body text-center">
+                  <a href="#" class="d-block h6 lh-150">Get Expert Opinion</a>
+                  <p class="text-muted  mb-0">Free Consultation with our Designers</p>
+                </div>
+
               </div>
-              <input type="file" name="img_logo" class="dropzone">
+            </div>
+            <div class="col-lg-3 pr-5">
+              <div class="card pl-2 pr-2" style="min-height: 425px !important;">
+                <a href="#">
+                  <img src="assets/img/interio-banner-international-designer.png" class="card-img-top">
+                </a>
+                <div class="card-body text-center">
+                  <a href="#" class="d-block h6 lh-150">Get access to International Designers</a>
+                  <p class="text-muted mb-0">View international portfolio & Get your interiors done by them</p>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-lg-3 pr-5">
+              <div class="card pl-2 pr-2" style="min-height: 425px !important;">
+                <a href="#">
+                  <img src="assets/img/interio-banner-diy.png" class="card-img-top">
+                </a>
+                <div class=" card-body text-center">
+                  <a href="#" class="d-block h6 lh-150">Do It Your Way</a>
+                  <p class="text-muted  mb-0">Design your Dream Interiors yourself</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="pt-7 pb-7">
+            <div class="container">
+              <div class="mb-5 text-center">
+                <h1 class=" mt-4 text-uppercase">International Expertise Just a Touch Away</h1>
+                <h4 class=" text-white"><span class="sub-head">International Designers</span></h4>
+                <div class="fluid-paragraph mt-3">
+                  <p class="lead lh-180">We’ve herded together a group of innovative and experienced designers who will help you give new perspective and aesthetics to your design</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="card">
+                    <div class="animate-this">
+                      <img alt="Image placeholder" src="assets/img/people-1.jpg" class="card-img-top">
+                      <a href="assets/vids/jose-gonzales-spain.mp4" class="btn btn-lg btn-white btn-icon-only rounded-circle shadow-sm position-absolute right-4 top-4 hover-scale-110" data-fancybox>
+                        <span class="btn-inner--icon">
+                          <i class="fas fa-play"></i>
+                        </span>
+                      </a>
+                    </div>
+                    <div class="card-body">
+                      <blockquote class="blockquote">
+                        <span class="quote"></span>
+                        <div class="quote-text">
+                          <p class="font-italic lh-170">Subtlety is my motto. I work on making intricate patterns. You could say that I am obsessed with it.</p>
+                          <footer class="blockquote-footer">
+                            Jose Gonzales, <cite title="Source Title">Hawk’s Eye Designer</cite>
+                          </footer>
+                        </div>
+                      </blockquote>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="card">
+                    <div class="animate-this">
+                      <img alt="Image placeholder" src="assets/img/people-2.jpg" class="card-img-top">
+                      <a href="assets/vids/prominence.mp4" class="btn btn-lg btn-white btn-icon-only rounded-circle shadow-sm position-absolute right-4 top-4 hover-scale-110" data-fancybox>
+                        <span class="btn-inner--icon">
+                          <i class="fas fa-play"></i>
+                        </span>
+                      </a>
+                    </div>
+                    <div class="card-body">
+                      <blockquote class="blockquote">
+                        <span class="quote"></span>
+                        <div class="quote-text">
+                          <p class="font-italic lh-170">I work with the idea that my designs are always going to challenge the norm. <!-- They are made to help people to only get a better finish but also to create an unique style that distinguishes their designs from others --></p>
+                          <footer class="blockquote-footer">
+                            Galina Ilina, <cite title="Source Title">Russian Challenger</cite>
+                          </footer>
+                        </div>
+                      </blockquote>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-5 text-center">
+                <a href="designers.html" class="btn btn-sm bg-gradient-primary rounded-pill btn-icon">
+                  <span class="btn-inner--icon text-white"><i class="fas fa-angle-right"></i></span>
+                  <span class="btn-inner--text text-white">View More</span>
+                </a>
+              </div>
+            </div>
+          </section>
+
+      <section class="pt-7" id="inspirations">
+        <div class="container">
+          <div class="text-center">
+            <h1 class="text-uppercase">The Gallery of Inspiration</h1>
+            <h4 class=" text-white"><span class="sub-head">Inspirations</span></h4>
+            <div class=" mt-4">
+              <p class="lead text-muted lh-180">
+                See the glorious arrays of design that we have in our vast repertoire and get inspired.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-3 pb-5">
+        <div class="container pt-7 swiper-js-container">
+          <div class="swiper-container" data-swiper-direction="vertical" data-swiper-effect="coverflow" data-swiper-centered-slides="true" data-swiper-initial-slide="3" data-swiper-items="1" data-swiper-space-between="0" data-swiper-sm-items="2" data-swiper-sm-space-between="0">
+
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <a href="assets/img/bedroom/BEDROOM-_1.png" data-fancybox="apps">
+                  <img src="assets/img/bedroom/BEDROOM-_1.png" class="img-fluid rounded">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="assets/img/bedroom/BEDROOM-_2.png" data-fancybox="apps">
+                  <img src="assets/img/bedroom/BEDROOM-_2.png" class="img-fluid rounded">
+                </a>
+              </div>
+               <div class="swiper-slide">
+                <a href="assets/img/bedroom/BEDROOM-_7.png" data-fancybox="apps">
+                  <img src="assets/img/bedroom/BEDROOM-_7.png" class="img-fluid rounded">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="assets/img/bedroom/BEDROOM-_4.png" data-fancybox="apps">
+                  <img src="assets/img/bedroom/BEDROOM-_4.png" class="img-fluid rounded">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="assets/img/3d-kitchen-views-final-output/Kitchen-1-13-08-2020_3.jpg" data-fancybox="apps">
+                  <img src="assets/img/3d-kitchen-views-final-output/Kitchen-1-13-08-2020_3.jpg" class="img-fluid rounded">
+                </a>
+              </div>
+               <div class="swiper-slide">
+                <a href="assets/img/3d-kitchen-views-final-output/Kitchen-2-13-08-2020-3.jpg" data-fancybox="apps">
+                  <img src="assets/img/3d-kitchen-views-final-output/Kitchen-2-13-08-2020-3.jpg" class="img-fluid rounded">
+                </a>
+              </div>
+             <!--  <div class="swiper-slide">
+                <a href="assets/img/gallery/7.jpg" data-fancybox="apps">
+                  <img src="assets/img/gallery/7.jpg" class="img-fluid rounded">
+                </a>
+              </div> 
+              <div class="swiper-slide">
+                <a href="assets/img/gallery/8.jpg" data-fancybox="apps">
+                  <img src="assets/img/gallery/8.jpg" class="img-fluid rounded">
+                </a>
+              </div> -->
+              <div class="swiper-slide">
+                <a href="assets/img/3d-kitchen-views-final-output/kitchen-6-07-08-2020.jpg" data-fancybox="apps">
+                  <img src="assets/img/3d-kitchen-views-final-output/kitchen-6-07-08-2020.jpg" class="img-fluid rounded">
+                </a>
+              </div>
+              <div class="swiper-slide">
+                <a href="assets/img/3d-kitchen-views-final-output/Kitchen-7-17-08-2020-2.jpg" data-fancybox="apps">
+                  <img src="assets/img/3d-kitchen-views-final-output/Kitchen-7-17-08-2020-2.jpg" class="img-fluid rounded">
+                </a>
+              </div>                     
+              <div class="swiper-slide">
+                <a href="assets/img/tv-units/tv Unit_03_10.jpg" data-fancybox="apps">
+                  <img src="assets/img/tv-units/tv Unit_03_10.jpg" class="img-fluid rounded">
+                </a>
+              </div>
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+        </div>        
+      </section>
+      <div class="mt-5 mb-5 text-center">
+                <a href="gallery.html" class="btn btn-sm bg-gradient-primary rounded-pill btn-icon">
+                  <span class="btn-inner--icon text-white"><i class="fas fa-angle-right"></i></span>
+                  <span class="btn-inner--text text-white">View More</span>
+                </a>
+              </div>
+
+      <div class="pt-10 mt-3 pb-5">
+        <section class="position-relative pb-lg-8 mb-10">
+          <div class="bg-img-holder top-0 right-0 col-lg-6 zindex-100" data-bg-size="cover">
+            <img src="assets/img/prominance-kitchen-image-2.jpg">
+          </div>
+          <div class="container py-6">
+            <div class="row">
+              <div class="col-lg-5 pt-lg-9">
+                <div class="text-center text-lg-left">
+                  <h2 class="h1 mb-3 text-uppercase">Experience Perfection</h2>
+                  <h4 class=" text-white"><span class="sub-head">Showrooms</span></h4>
+                  <p class="lead lh-180">Come into our experience centres in a town near you and witness the embodiment of perfection.s</p>
+                  <p class="lead lh-180">Bangalore | Chennai | Cochin | Hyderabad | Delhi | Coimbatore</p>
+                  <a href="#" class="btn text-white rounded-pill mt-4" style="background: linear-gradient(240deg, #3dc1ed 0%, #7ac49d 100%);">Learn more</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="pt-5" id="why-prominance">
+        <div class="container">
+          <div class="text-center pb-5">
+            <h1 class="text-uppercase">Promises of Prominance</h1>
+            <h4 class=" text-white"><span class="sub-head">Why Prominance</span></h4>
+            <div class=" ">
+              <p class="lead text-muted lh-180">
+                <p>Nothing is taken for granted – we always prioritize the needs of the customer and everything is ordered to enhance your experience.</p>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <div class="row row-grid align-items-center justify-content-around text-white" style="background: linear-gradient(240deg, #3dc1ed 0%, #7ac49d 100%);">
+
+            <div class="col-lg-8">
+
+              <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                  <div class="mb-4">
+                    <div class="pt-5 pb-2">
+                      <div class="icon text-center">
+                        <img src="assets/img/icons/prominance-interio-icons-manufacturing-facility.png">
+                      </div>
+                    </div>
+                    <p class="text-center">Own manufacturing facility</p>
+                    <!-- <p class=" mt-2 mb-0">We operate our very own manufacturing facility that lets us create better quality and give better price.</p> -->
+                  </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                  <div class="mb-4">
+                    <div class="pt-5 pb-2">
+                      <div class="icon text-center">
+                        <img src="assets/img/icons/prominance-interio-icons10-year-warranty.png">
+                      </div>
+                    </div>
+                    <p class="text-center">10 years warranty</p>
+                    <!-- <p class=" mt-2 mb-0">You will be glad to know that our products come along with a 10 year warranty that will take care of maintenance</p> -->
+                  </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                  <div class="mb-4">
+                    <div class="pt-5 pb-2">
+                      <div class="icon text-center">
+                        <img src="assets/img/icons/prominance-interio-iconscertified.png">
+                      </div>
+                    </div>
+                    <p class="text-center">Certified Products</p>
+                    <!-- <p class=" mt-2 mb-0">Our superior manufacturing entails products that complied with most standards and regulation making them certified and superior.</p> -->
+                  </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                  <div class="mb-4">
+                    <div class="pt-5 pb-2">
+                      <div class="icon text-center">
+                        <img src="assets/img/icons/prominance-interio-icons-international-designers.png">
+                      </div>
+                    </div>
+                    <p class="text-center">International Designers</p>
+                    <!-- <p class=" mt-2 mb-0">If you are looking for something that is out of the box, then we can bring in innovative designers from across the globe. </p> -->
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                  <div class="mb-4">
+                    <div class="pt-5 pb-2">
+                      <div class="icon text-center">
+                        <img src="assets/img/icons/prominance-interio-icons-diy.png">
+                      </div>
+                    </div>
+                    <p class="text-center">Build Your Own Interior</p>
+                    <!-- <p class=" mt-2 mb-0">Design your very own home interiors with our do it yourself feature  and we’ll translate it into the real world </p> -->
+                  </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                  <div class="mb-4">
+                    <div class="pt-5 pb-2">
+                      <div class="icon text-center">
+                        <img src="assets/img/icons/prominance-interio-icons-experience-center.png">
+                      </div>
+                    </div>
+                    <p class="text-center">Experience Centre Close to You</p>
+                    <!-- <p class=" mt-2 mb-0">There is always an experience centre close to you so that you can come around and witness the many designs of the products.</p> -->
+                  </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                  <div class="mb-4">
+                    <div class="pt-5 pb-2">
+                      <div class="icon text-center">
+                        <img src="assets/img/icons/prominance-interio-icons10000-designs.png">
+                      </div>
+                    </div>
+                    <p class="text-center">Over 10,000 Designs</p>
+                    <!-- <p class=" mt-2 mb-0">We’ve got more than 10,000 designs in our repertoire and this enormous catalogue give you the luxury of choice.</p> -->
+                  </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                  <div class="mb-4">
+                    <div class="pt-5 pb-2">
+                      <div class="icon text-center">
+                        <img src="assets/img/icons/prominance-interio-icons24-hour-service.png">
+                      </div>
+                    </div>
+                    <p class="text-center">24 Hours Service Support</p>
+                    <!-- <p class=" mt-2 mb-0">We can give you service support around the clock, taking in your grievances and answering your queries.</p> -->
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                  <div class="mb-4">
+                    <div class="pt-5 pb-2">
+                      <div class="icon text-center">
+                        <img src="assets/img/icons/prominance-interio-icons20-day-delivery.png">
+                      </div>
+                    </div>
+                    <p class="text-center">20 Days Delivery Guaranteed</p>
+                    <!-- <p class=" mt-2 mb-0">You can get your final product within 20 days as we have in place a seamless network in place for efficient delivery</p> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="">
+                <img src="assets/img/table.png" class="img-center img-fluid">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="pt-10 pb-5 overflow-hidden bg-gradient-secondary delimiter-top delimiter-bottom">
+            <!-- SVG background -->
+            <div class="bg-absolute-cover bg-size--contain d-flex align-items-center">
+              <figure class="w-100">
+                <img alt="Image placeholder" src="assets/img/bg.svg" class="svg-inject">
+              </figure>
+            </div>
+            <div class="container position-relative zindex-100">
+              <div class="row justify-content-center align-items-center">
+                <div class="col-lg-8 text-center">
+                <h1 class=" mt-4 text-uppercase">Downloads</h1>                
+                  <div class="mt-5 mb-5">
+                    <a href="assets/interio-brochure.pdf" download="interio-brochure.pdf" class="btn bg-gradient-primary text-white rounded-pill hover-translate-y-n3">E-Brochure </a>
+                    <a href="assets/DIY-kitchen-planner.pdf" download="DIY-kitchen-planner.pdf" class="btn bg-gradient-primary text-white  rounded-pill hover-translate-y-n3">DIY Kitchen Planner</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+      <section class="pt-10 pb-5" id="testimonials">
+        <div class="container">
+          <div class="mb-5 text-center">
+            <h1 class=" mt-4 text-uppercase">The Testimony of the Heart</h1>
+            <h4 class=" text-white"><span class="sub-head">Testimonials</span></h4>
+            <div class="fluid-paragraph mt-3">
+              <p class="lead lh-180">These are words straight from their hearts, words that tell the story of how we made their lives better.</p>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-lg-11">
+              <div class="swiper-js-container overflow-hidden">
+                <div class="swiper-container" data-swiper-items="1" data-swiper-space-between="0" data-swiper-sm-items="2" data-swiper-xl-items="1">
+                  <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                      <div class="container">
+                        <div class="row justify-content-around align-items-center">
+                          <div class="col-lg-5">
+                            <div class="p-4">
+                              <div class="card">
+                                <div class="card-body">
+                                  <div class="d-flex align-items-center">
+                                    
+                                    <div class="pl-3">
+                                      <h5 class="h6 mb-0">Ram Varma</h5>
+                                      <small class="d-block text-muted">Bengaluru</small>
+                                    </div>
+                                  </div>
+                                  <p class="mt-4 lh-180">Our experience with Prominance has been so good that we recommended two of our friends also to go with them. The best part was we got our complete interiors done by designers from around the world</p>
+                                  <span class="static-rating static-rating-sm">
+                                    <i class="star fas fa-star voted"></i>
+                                    <i class="star fas fa-star voted"></i>
+                                    <i class="star fas fa-star voted"></i>
+                                    <i class="star fas fa-star voted"></i>
+                                    <i class="star fas fa-star voted"></i>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <img src="assets/img/modular-tv-units-banner.jpg" class="img-center img-fluid">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                      <div class="container">
+                        <div class="row justify-content-around align-items-center">
+                          <div class="col-lg-5">
+                            <div class="p-4">
+                              <div class="card">
+                                <div class="card-body">
+                                  <div class="d-flex align-items-center">
+                                    
+                                    <div class="pl-3">
+                                      <h5 class="h6 mb-0">Govind Kumar</h5>
+                                      <small class="d-block text-muted">Delhi</small>
+                                    </div>
+                                  </div>
+                                  <p class="mt-4 lh-180">We wanted to the get our duplex home’s design done real quick but also wanted a fresh perspective. Prominance Interio, helped us give a dazzling new interior in no time.</p>
+                                  <span class="static-rating static-rating-sm">
+                                    <i class="star fas fa-star voted"></i>
+                                    <i class="star fas fa-star voted"></i>
+                                    <i class="star fas fa-star voted"></i>
+                                    <i class="star fas fa-star voted"></i>
+                                    <i class="star fas fa-star voted"></i>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <img src="assets/img/provinance-banner-2.jpg" class="img-center img-fluid">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                      <div class="container">
+                        <div class="row justify-content-around align-items-center">
+                          <div class="col-lg-5">
+                            <div class="p-4">
+                              <div class="card">
+                                <div class="card-body">
+                                  <div class="d-flex align-items-center">
+                                    
+                                    <div class="pl-3">
+                                      <h5 class="h6 mb-0">Jason Kurien</h5>
+                                      <small class="d-block text-muted">Hyderabad</small>
+                                    </div>
+                                  </div>
+                                  <p class="mt-4 lh-180">I wanted my new apartment to be fit into a home resembling the 60’s era. The expert designers from Prominance knew how to emulate the style perfectly.</p>
+                                  <span class="static-rating static-rating-sm">
+                                    <i class="star fas fa-star voted"></i>
+                                    <i class="star fas fa-star voted"></i>
+                                    <i class="star fas fa-star voted"></i>
+                                    <i class="star fas fa-star voted"></i>
+                                    <i class="star fas fa-star voted"></i>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <img src="assets/img/modular-shoe-banner.jpg" class="img-center img-fluid">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                      <div class="container">
+                        <div class="row justify-content-around align-items-center">
+                          <div class="col-lg-5">
+                            <div class="p-4">
+                              <div class="card">
+                                <div class="card-body">
+                                  <div class="d-flex align-items-center">
+                                    
+                                    <div class="pl-3">
+                                      <h5 class="h6 mb-0">Mohammad Aslam </h5>
+                                      <small class="d-block text-muted">Coimbatore</small>
+                                    </div>
+                                  </div>
+                                  <p class="mt-4 lh-180">Our home was becoming dull, and we wanted to get a new perspective. By being able to contact a Spanish designer, we got a Andalusian interior done perfectly.</p>
+                                  <span class="static-rating static-rating-sm">
+                                    <i class="star fas fa-star voted"></i>
+                                    <i class="star fas fa-star voted"></i>
+                                    <i class="star fas fa-star voted"></i>
+                                    <i class="star fas fa-star voted"></i>
+                                    <i class="star fas fa-star voted"></i>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <img src="assets/img/modular-study-banner.jpg" class="img-center img-fluid">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="swiper-slide">
+                      <div class="container">
+                        <div class="row justify-content-around align-items-center">
+                          <div class="col-lg-5">
+                            <div class="p-4">
+                              <div class="card">
+                                <div class="card-body">
+                                  <div class="d-flex align-items-center">
+                                    
+                                    <div class="pl-3">
+                                      <h5 class="h6 mb-0">Katha Phule </h5>
+                                      <small class="d-block text-muted">Cochin</small>
+                                    </div>
+                                  </div>
+                                  <p class="mt-4 lh-180">Me and my husband were looking for a designer who could create a laid back and relaxing ambience indoors. Prominance gave us the right designer to do the job to perfection.</p>
+                                  <span class="static-rating static-rating-sm">
+                                    <i class="star fas fa-star voted"></i>
+                                    <i class="star fas fa-star voted"></i>
+                                    <i class="star fas fa-star voted"></i>
+                                    <i class="star fas fa-star voted"></i>
+                                    <i class="star fas fa-star voted"></i>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <img src="assets/img/modular-pooja-banner.jpg" class="img-center img-fluid">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination w-100 mt-4 d-flex align-items-center justify-content-center"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pt-10 pb-10" id="design-blog">
+        <div class="container">
+          <div class="mb-5 text-center">
+            <h1 class=" mt-4 text-uppercase">The Designers Digest</h1>
+            <h4 class=" text-white"><span class="sub-head">Design blogs</span></h4>
+            <div class="fluid-paragraph mt-3">
+              <p class="lead lh-180">Read the latest news from the design world and keep up the latest trends thats in vogue.</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card hover-shadow-lg">
+                <a href="blogs/what-is-the-golden-triangle-rule-in-a-designing-modular-kitchen.html">
+                  <img src="assets/img/modular-kitchen-banner.jpg" class="card-img-top">
+                </a>
+                <div class="card-body py-5 text-center">
+                  <a href="blogs/what-is-the-golden-triangle-rule-in-a-designing-modular-kitchen.html" class="d-block h5 lh-150">What is the Golden Triangle Rule in a designing Modular Kitchen?</a>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card hover-shadow-lg">
+                <a href="blogs/5-best-space-saving-ideas-for-modular-kitchens-showmydesigner.html">
+                  <img src="assets/img/gallery/10.jpg" class="card-img-top">
+                </a>
+                <div class="card-body py-5 text-center">
+                  <a href="blogs/5-best-space-saving-ideas-for-modular-kitchens-showmydesigner.html" class="d-block h5 lh-150">5 Best Space Saving Ideas for Modular Kitchens</a>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card hover-shadow-lg">
+                <a href="blogs/how-to-choose-the-perfect-colour-for-your-modular-kitchen.html">
+                  <img src="assets/img/provinance-banner-1.jpg" class="card-img-top">
+                </a>
+                <div class="card-body py-5 text-center">
+                  <a href="blogs/how-to-choose-the-perfect-colour-for-your-modular-kitchen.html" class="d-block h5 lh-150">How to choose the perfect colour for your Modular Kitchen</a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card hover-shadow-lg">
+                <a href="blogs/types-of-shoe-racks-for-your-home.html">
+                  <img src="blogs/img/types-of-shoe-racks-for-your-home-4.jpg" class="card-img-top">
+                </a>
+                <div class="card-body py-5 text-center">
+                  <a href="blogs/types-of-shoe-racks-for-your-home.html" class="d-block h5 lh-150">Types of Shoe Racks for your Home</a>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card hover-shadow-lg">
+                <a href="blogs/wardrobe-fittings-and-accessories.html">
+                  <img src="blogs/img/wardrobe-fittings-and-accessories-5.jpg" class="card-img-top">
+                </a>
+                <div class="card-body py-5 text-center">
+                  <a href="blogs/wardrobe-fittings-and-accessories.html" class="d-block h5 lh-150">Wardrobe Fittings and Accessories</a>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card hover-shadow-lg">
+                <a href="blogs/a-guide-to-modular-kitchen-layouts.html">
+                  <img src="blogs/img/a-guide-to-modular-kitchen-layouts-6.jpg" class="card-img-top">
+                </a>
+                <div class="card-body py-5 text-center">
+                  <a href="blogs/a-guide-to-modular-kitchen-layouts.html" class="d-block h5 lh-150">A Guide to Modular Kitchen Layouts</a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+    <footer id="footer-main">
+      <div class="footer footer-dark" style="background: linear-gradient(90deg, #3dc1ed 0%, #7ac49d 100%);">
+        <div class="container">
+          <div class="row pt-md">
+            <div class="col-lg-3 mb-5 mb-lg-0">
+              <a href="index.html">
+                <img src="assets/img/white-logo.png" alt="Footer logo" style="height: 70px;">
+              </a>
+              <p>Our expertise and perfectionism entails usage of materials of the highest standard. We are well versed in the creation of stunning living rooms, bedrooms, and kitchen.</p>
+            </div>
+            <div class="col-lg-3 col-6 col-sm-4 ml-lg-auto mb-5 mb-lg-0 ">
+              <h6 class="heading mb-3">Modular Kitchen</h6>
+              <ul class="list-unstyled">
+                <li><a href="#">Modular Kitchen Cost Calculator</a></li>
+                <li><a href="#">Modular Kitchen in Bengaluru</a></li>
+                <li><a href="#">Modular Kitchen in Coimbatore</a></li>
+                <li><a href="#">Modular Kitchen Cost Delhi</a></li>
+                <li><a href="#">Modular Kitchen in Pune</a></li>
+                <li><a href="#">Modular Kitchen in Mumbai</a></li>
+                <li><a href="#">Modular Kitchen Cost Kolkata</a></li>
+                <li><a href="#">Modular Kitchen in Hyderabad</a></li>
+                <li><a href="#">Modular Kitchen in Chennai</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-6 col-sm-4 mb-5 mb-lg-0 ">
+              <h6 class="heading mb-3">Wardrobe Design</h6>
+              <ul class="list-unstyled text-small">
+                <li><a href="#">Wardrobe Designs in Delhi</a></li>
+                <li><a href="#">Wardrobe Designs in Coimbatore</a></li>
+                <li><a href="#">Wardrobe Designs in Bengaluru</a></li>
+                <li><a href="#">Wardrobe Designs in Hyderabad</a></li>
+                <li><a href="#">Wardrobe Designs in Pune</a></li>
+                <li><a href="#">Wardrobe Designs in Chennai</a></li>
+                <li><a href="#">Wardrobe Designs in Mumbai</a></li>
+                <li><a href="#">Wardrobe Designs in Kolkata</a></li>
+              </ul>
+            </div>
+            <div class="col-lg-3 col-sm-4 mb-5 mb-lg-0 ">
+              <h6 class="heading mb-3">Interior Designers</h6>
+              <ul class="list-unstyled">
+                <li><a href="#">Interior Designer In Bengaluru</a></li>
+                <li><a href="#">Interior Designer In Chennai</a></li>
+                <li><a href="#">Interior Designer In Pune</a></li>
+                <li><a href="#">Interior Designer In Mumbai</a></li>
+                <li><a href="#">Interior Designer In Hyderabad</a></li>
+                <li><a href="#">Interior Designer In Kolkata</a></li>
+                <li><a href="#">Interior Designer In Gurgaon</a></li>
+                <li><a href="#">Interior Designer In Noida</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="row align-items-center justify-content-md-between py-4 mt-4 delimiter-top">
+            <div class="col-md-6">
+              <div class="copyright text-sm font-weight-bold text-center text-md-left">
+                &copy; 2020 <a href="#" class="font-weight-bold"></a>. All rights reserved.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <ul class="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <i class="fab fa-dribbble"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <i class="fab fa-github"></i>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <i class="fab fa-facebook"></i>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
+    </footer>
+    <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
+    <script src="assets/js/purpose.core.js"></script>
+    <!-- Page JS -->
+    <script src="assets/libs/swiper/dist/js/swiper.min.js"></script>
+    <script src="assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="assets/libs/typed.js/lib/typed.min.js"></script>
+    <script src="assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script>
+    <script src="assets/libs/jquery-countdown/dist/jquery.countdown.min.js"></script>
+    <!-- Purpose JS -->
+    <script src="assets/js/purpose.js"></script>
+    <!-- Demo JS - remove it when starting your project -->
+    <script src="assets/js/demo.js"></script>
+  </body>
 
-      <div class="row">
-        <div class="col-md-12">
-          <button type="submit" class="btn btn-primary pull-right">Upload</button>
-        </div>
-      </div>
-    </div>
-  </form>
-</section>
-
-</body>
 </html>
